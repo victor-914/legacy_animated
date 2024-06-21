@@ -26,28 +26,33 @@ export default function Home() {
     // landing page animation
     landingPageTl.to(landPgSelector(".gamePad"), {
       y: -1400,
-      duration: 2,
+      duration: 1,
       scale: 0.6,
       rotate: 360,
+      delay:0.5,
       rotateZ: 360,
       display: "none",
     })
+      .to(landPgSelector(".cover_first"), {
+        duration: 0.5,
+        backgroundColor: "#000000bf",
+      })
+      .from(landPgSelector(".text_first"), {
+        opacity:0,
+        duration:0.7,
+      })
       .from(landPgSelector(".textFirst_p"), {
-        duration: 1,
+        duration: 0.8,
         y: 40,
         opacity: 0,
       })
-      .to(landPgSelector(".cover_first"), {
-        duration: 1.5,
-        backgroundColor: "#000000d5",
-      })
       .from(landPgSelector("#logo"), {
-        opacity:0,
+        opacity: 0,
         duration: 1,
-        y:20,
-        rotateZ:360,
-        rotateX:360,
-        scale:2,
+        y: 20,
+        rotateZ: 360,
+        rotateX: 360,
+        scale: 2,
       })
 
 
@@ -91,9 +96,9 @@ export default function Home() {
           <TypeAnimation
             sequence={[
               'LEGACY GAMING',
-              500,
+              4000,
               'LEGACY GAMING  AFRICA',
-              500,
+              4000,
             ]}
             repeat={0}
             cursor={false}
@@ -167,6 +172,7 @@ overflow-y: visible;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  width:100;
   background-image: url("/homeBg.gif");
   background-position: center;
   background-repeat: no-repeat;
@@ -194,7 +200,7 @@ overflow-y: visible;
   font-size: 20px;
   font-weight: 800;
   z-index: 2;
-  background-color: red;
+  /* background-color: red; */
   text-align: center;
  }
 
@@ -242,13 +248,14 @@ overflow-y: visible;
 
  @media (max-width:500px) {
   .textFirst_p{
-    background-color: green;
+    /* background-color: green; */
 
   }
 
   .text_first{
-    font-size: 20;
+    font-size: 18px;
   }
+
  }
 
 `
