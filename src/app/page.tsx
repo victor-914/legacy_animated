@@ -8,6 +8,7 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TypeAnimation } from 'react-type-animation';
 import GlobalStyle from "./global.style";
+import LandPage from "@/components/landingpage/LandPage";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -24,22 +25,22 @@ export default function Home() {
 
 
     // landing page animation
-    landingPageTl.to(landPgSelector(".gamePad"), {
-      y: -1400,
-      duration: 1,
-      scale: 0.6,
-      rotate: 360,
-      delay:0.5,
-      rotateZ: 360,
-      display: "none",
-    })
-      .to(landPgSelector(".cover_first"), {
+    // landingPageTl.to(landPgSelector(".gamePad"), {
+    //   y: -1400,
+    //   duration: 1,
+    //   scale: 0.6,
+    //   rotate: 360,
+    //   delay: 0.5,
+    //   rotateZ: 360,
+    //   display: "none",
+    // })
+    landingPageTl.to(landPgSelector(".cover_first"), {
         duration: 0.5,
         backgroundColor: "#000000bf",
       })
       .from(landPgSelector(".text_first"), {
-        opacity:0,
-        duration:0.7,
+        opacity: 0,
+        duration: 0.7,
       })
       .from(landPgSelector(".textFirst_p"), {
         duration: 0.8,
@@ -83,49 +84,7 @@ export default function Home() {
   return (
     <StyledHome>
       <GlobalStyle />
-      <section ref={landingPgRef} className="firstContainer">
-
-
-        <Image id="logo"
-          style={{
-            zIndex: "2"
-          }}
-          layout="fixed" width={300} height={300} src="/logo.png" alt="logo" />
-
-        <div className="text_first">
-          <TypeAnimation
-            sequence={[
-              'LEGACY GAMING',
-              4000,
-              'LEGACY GAMING  AFRICA',
-              4000,
-            ]}
-            repeat={0}
-            cursor={false}
-          />
-
-        </div>
-
-        <p className="textFirst_p">Empowering gamers across the continent...</p>
-
-
-        <div className="cover_first">
-
-        </div>
-
-        <aside className="gamePad">
-          <Image id="gameImg" layout="fixed" width={350} height={350} src="/gamepad.png" alt="logo" />
-        </aside>
-
-
-
-
-
-
-        {/* <main>
-
-        </main> */}
-      </section>
+      <LandPage value={landingPgRef} />
       <div ref={containerRef} className="container">
         <div className="description panel blue">
           <div>
@@ -166,7 +125,7 @@ overflow-y: visible;
   flex-wrap: nowrap;
 }
 
-.firstContainer {
+/* .firstContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -189,7 +148,7 @@ overflow-y: visible;
   letter-spacing: 3px;
   text-shadow: 2px 2px #000000;
   word-spacing: 2px;
-  /* opacity:1; */
+  /* opacity:1; 
   font-family: "Shrikhand", serif;
   font-style: normal;
   z-index: 2;
@@ -200,7 +159,7 @@ overflow-y: visible;
   font-size: 20px;
   font-weight: 800;
   z-index: 2;
-  /* background-color: red; */
+  /* background-color: red; 
   text-align: center;
  }
 
@@ -215,7 +174,7 @@ overflow-y: visible;
   height: 100%;
   background-color: #000;
   position:absolute;
-}
+} */
 
 
 .lastContainer {
@@ -246,9 +205,9 @@ overflow-y: visible;
  }
 
 
- @media (max-width:500px) {
+ /* @media (max-width:500px) {
   .textFirst_p{
-    /* background-color: green; */
+    /* background-color: green; 
 
   }
 
@@ -256,6 +215,6 @@ overflow-y: visible;
     font-size: 18px;
   }
 
- }
+ } */
 
 `
