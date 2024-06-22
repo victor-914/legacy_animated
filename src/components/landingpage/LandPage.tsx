@@ -1,7 +1,5 @@
-import React, {useRef} from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TypeAnimation } from 'react-type-animation';
 import Image from "next/image"
 
@@ -36,9 +34,7 @@ function LandPage(prop: { value: React.LegacyRef<HTMLElement> | undefined; }) {
 
             </div>
 
-            {/* <aside className="gamePad">
-                <Image id="gameImg" layout="fixed" width={350} height={350} src="/gamepad.png" alt="logo" />
-            </aside> */}
+          
         </StyledLanding>
     )
 }
@@ -47,14 +43,6 @@ export default LandPage
 
 
 const StyledLanding = styled.section`
-    
-    /* .container {
-  width: 400%;
-  height: 100vh;
-  display: flex;
-  flex-wrap: nowrap;
-} */
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -76,7 +64,6 @@ const StyledLanding = styled.section`
   letter-spacing: 3px;
   text-shadow: 2px 2px #000000;
   word-spacing: 2px;
-  /* opacity:1; */
   font-family: "Shrikhand", serif;
   font-style: normal;
   z-index: 2;
@@ -87,7 +74,6 @@ const StyledLanding = styled.section`
   font-size: 20px;
   font-weight: 800;
   z-index: 2;
-  /* background-color: red; */
   text-align: center;
  }
 
@@ -106,7 +92,6 @@ const StyledLanding = styled.section`
 
 @media (max-width:500px) {
   .textFirst_p{
-    /* background-color: green; */
    font-size: 16px;
   }
 
