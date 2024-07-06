@@ -1,15 +1,16 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import 'swiper/css/pagination';
-// import './styles.css';
 import { Pagination, Navigation } from 'swiper/modules';
 import styled from 'styled-components'
 import TeamCard, { data } from './TeamCard';
+import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
 
-function Team() {
+function Team(prop: { value: React.LegacyRef<HTMLDivElement> | undefined; }) {
+ 
+
   return (
-    <StyledTeam className="panel ourTeamContainer">
+    <StyledTeam ref={prop.value} className="panel ourTeamContainer">
       <header className="missionTitle">
         OUR TEAM
       </header>
@@ -18,24 +19,42 @@ function Team() {
         <q>
           The minds  transforming the gaming landscape in Africa</q>
       </div>
-      <Swiper
-        slidesPerView={2}
-        spaceBetween={20}
-        autoplay={true}
-        pagination={{
 
-          clickable: true,
-        }}
-        navigation={true}
-        modules={[Pagination, Navigation]}
-        className="mySwiper"
-      >
-        {data?.map((item) => (
-          <SwiperSlide className="swiperSlide">
-            <TeamCard value={item} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+
+      <main className='mainContainer'>
+
+        <FaLongArrowAltLeft
+         className='nav swiper-button-next'
+        /> 
+         <FaLongArrowAltRight
+          className=' nav swiper-button-prev'
+         />
+        <Swiper
+          slidesPerView={2}
+          spaceBetween={10}
+          autoplay={true}
+        
+          navigation={{
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+            disabledClass:'disabled-nav'
+          }}
+          modules={[Pagination, Navigation]}
+          className="mySwiper"
+        >
+          {data?.map((item) => (
+            <SwiperSlide key={item.title} className="swiperSlide">
+              <TeamCard value={item} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+
+      </main>
+
+
+
+
 
     </StyledTeam>
   )
@@ -44,39 +63,91 @@ function Team() {
 export default Team
 
 
-const StyledTeam = styled.section`
+const StyledTeam = styled.div`
   position: relative;
   height: 100%;
-  /* background: #eee; */
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 14px;
   color: #000;
   background-color: #000;
   margin: 0;
   padding: 0;
+  padding-top: 80px; 
+
+  
+
+
+  .mainContainer{
+    position:relative;
+   width:80%;
+   margin:auto;
+  }
+
+
+  .nav{
+    font-size:50px;
+    color: #CE9934;
+    top:50%;
+    position: absolute;
+    transition: 0.3s ease;
+
+  }
+
+  .nav:hover{
+    cursor: pointer;
+    transform: scale(1.5);
+  }
+
+  .disabled-nav{
+    color:#000;
+  }
+
+
+  .swiper-button-next{
+   left:5px;
+  }
+
+  .swiper-button-prev{
+    right:5px;
+  }
+
+  .mySwiper{
+    width: 100%;
+  }
+
+  .swiper-slide {
+    font-size: 18px;
+    width:80%;
+    display: flex; 
+    /* background-color: #CE9934;  */
+    justify-content: center; 
+    align-items: center;
+    /* padding: 20px; */
+  } 
+
+  
+
+  /* .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }  */
+
 
 .swiper {
-  width: 100%;
-  height: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  width: 70%;
+  height: auto;
+  /* margin-left: auto; */
+  padding: 20px;
+  /* margin-right: auto; */
+  /* border: 2px solid orange; */
 }
 
-.swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #fff;
-  height: calc((100% - 30px) / 2) !important;
 
-  /* Center slide text vertically */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.ourTeamContainer{
-border: 2px solid red;
-}
+
+
 
 .ourTeam{
   text-align: center;
@@ -100,6 +171,7 @@ border: 2px solid red;
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
+  /* border: 2px solid green; */
 }
 
 .missionTitle{
@@ -131,26 +203,8 @@ border: 2px solid red;
   padding: 18px;
 }
 
-.swiper {
-    width: 100%;
-    height: 100%;
-    /* background-color: red; */
-  }
 
-  .swiper-slide {
-    font-size: 18px;
-    margin-bottom: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
 
-  .swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
 
 
 `

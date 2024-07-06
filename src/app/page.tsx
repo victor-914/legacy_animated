@@ -10,14 +10,62 @@ import Image from "next/image"
 import Mission from "@/components/mission/Mission";
 import TeamCard, { data, PersonI } from "@/components/team/TeamCard";
 import Team from "@/components/team/Team";
-
+import News from "@/components/news/News";
+import NavBar from "@/components/navBar/NavBar";
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Home() {
 
+export interface MenuI {
+  _id: string,
+  title: String,
+  ref: React.RefObject<HTMLDivElement>,
+}
+
+export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
   const landingPgRef = useRef<HTMLDivElement>(null);
   const visionRef = useRef<HTMLDivElement>(null);
+
+  const newsRef = useRef<HTMLDivElement>(null);
+  const teamRef = useRef<HTMLDivElement>(null);
+  const subscribeRef = useRef<HTMLDivElement>(null);
+  const contactRef = useRef<HTMLDivElement>(null);
+
+
+ 
+
+
+
+
+  const menu = [
+    {
+      _id: "jdhskdssf",
+      title: "Home",
+      ref: landingPgRef,
+    },
+    {
+      _id: "jdhwkkrsf",
+      title: "About",
+      ref: visionRef,
+    },
+    {
+      _id: "jdwerfhf",
+      title: "Team",
+      ref: teamRef,
+    },
+    {
+      _id: "jdhwrwf",
+      title: "Highlights",
+      ref: newsRef,
+    },
+    {
+      _id: "jeredhf",
+      title: "Subscribe",
+      ref: subscribeRef,
+    },
+ 
+
+  ]
 
   useGSAP(() => {
     const sections = gsap.utils.toArray(".panel")
@@ -90,7 +138,7 @@ export default function Home() {
         trigger: containerRef.current,
         pin: true,
         scrub: 1,
-        // snap: 1 / (sections.length - 1),
+        snap: 1 / (sections.length - 1),
         end: () => "+=" + containerRef?.current?.offsetWidth
       }
     })
@@ -104,23 +152,19 @@ export default function Home() {
 
   return (
     <StyledHome>
-      <GlobalStyle />
+      <NavBar
+        data={menu}
+      />
       <LandPage value={landingPgRef} />
       <div ref={containerRef} className="container">
         <Mission value={visionRef} />
-        {/* <section> */}
-
-        <Team />
-
-        {/* </section> */}
-        <section className="panel orange">
-          three
-        </section>
-        <section className="panel purple">
+        <Team value={teamRef} />
+        <News value={newsRef} />
+        <section ref={subscribeRef} className="panel purple">
           four
         </section>
       </div>
-      <div className="lastContainer">
+      <div ref={contactRef} className="lastContainer">
         Last Container
       </div>
     </StyledHome>
@@ -133,7 +177,8 @@ overflow-y: visible;
   height: unset;
   overflow-x: hidden;
   margin: 0;
-  background-color: #000;
+  /* background-color: #0; */
+  box-sizing:border-box;
 
 
 .container {
@@ -161,10 +206,10 @@ overflow-y: visible;
 }
 
 
+/* newsletter */
 
- .orange{
-  background-color: green;
- }
+
+
 
  .purple{
   background-color: orange;

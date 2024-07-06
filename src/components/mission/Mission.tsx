@@ -34,7 +34,7 @@ export default Mission
 const StyledMission = styled.section`
 
   background-color: #000;
-
+  padding-top:70px;
 
 
 .visionText{

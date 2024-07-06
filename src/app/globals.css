@@ -6,13 +6,14 @@ html {
   -webkit-overflow-scrolling: touch;
   /* overflow-scrolling: touch; */
 }
-body {
+/* body {
   overflow-y: visible;
   position: relative;
   height: unset;
-}
+} */
 html,
 body {
   overflow-x: hidden;
   margin: 0;
+  padding: 0;
 }
