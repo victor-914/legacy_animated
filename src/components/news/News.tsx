@@ -6,10 +6,14 @@ import 'swiper/css';
 import NewsCard from "./NewsCard"
 import { Pagination, Navigation } from 'swiper/modules';
 import { FaAnglesLeft, FaAnglesRight } from "react-icons/fa6";
+import { ParticlesNewComponent } from "../particle/NewsParticle";
 function News(prop: { value: React.LegacyRef<HTMLDivElement> }) {
   return (
+
     <StyledNews ref={prop.value} className='panel newsLetterContainer'>
-      <header className="newsLetterHeader">
+      <ParticlesNewComponent id="particle" />
+    
+     <header className="newsLetterHeader">
         <p className="newsTitle">News & Events</p>
 
         <p className="newsSubtitle">
@@ -67,7 +71,7 @@ function News(prop: { value: React.LegacyRef<HTMLDivElement> }) {
 
         </main>
 
-      </main>
+      </main> 
     </StyledNews>
   )
 }
@@ -76,15 +80,25 @@ export default News
 
 
 const StyledNews = styled.div`
-/* width: 100vw; */
 height: 100vh;
-background-color:#fff;
+/* background-color:#fff; */
 display: flex;
 flex-direction: row-reverse;
+width:100%;
 align-items: center;
+background-color: transparent;
 font-family:"Poppins";
+position: relative;
+/* background-color: red; */
+
 justify-content:flex-end;
-border: 2px solid green;
+
+#particle  .canva {
+  z-index:-1;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
 
 .newsList{
  width: 50%;

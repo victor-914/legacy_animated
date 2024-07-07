@@ -17,6 +17,8 @@ interface TeamCardProps {
 
 
 
+
+
 export const data: PersonI[] = [
     {
         _id: "7475",

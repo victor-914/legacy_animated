@@ -1,11 +1,19 @@
-import React, { useRef } from 'react'
+import React, { useRef, useMemo } from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
+import ParticlesComponent from "../particle/Particles"
+
 
 
 function Mission(prop: { value: React.LegacyRef<HTMLElement> | undefined; }) {
+
+
+
     return (
         <StyledMission className="vision panel" ref={prop.value}>
+
+            <ParticlesComponent id="particles" />
+                    
 
             <div className="visionText">
                 <q>
@@ -32,9 +40,19 @@ export default Mission
 
 
 const StyledMission = styled.section`
-
-  background-color: #000;
+ background-color: #000;
+  /* background-color:transparent; */
   padding-top:70px;
+  /* width: 100%; */
+  /* height:100%; */
+  position: relative;
+
+  #particles   {
+  z-index:-1;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
 
 
 .visionText{

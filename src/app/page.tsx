@@ -12,6 +12,7 @@ import TeamCard, { data, PersonI } from "@/components/team/TeamCard";
 import Team from "@/components/team/Team";
 import News from "@/components/news/News";
 import NavBar from "@/components/navBar/NavBar";
+import NewsLetter from "@/components/newsLetter/NewsLetter";
 gsap.registerPlugin(ScrollTrigger);
 
 
@@ -32,7 +33,7 @@ export default function Home() {
   const contactRef = useRef<HTMLDivElement>(null);
 
 
- 
+
 
 
 
@@ -63,7 +64,7 @@ export default function Home() {
       title: "Subscribe",
       ref: subscribeRef,
     },
- 
+
 
   ]
 
@@ -138,7 +139,7 @@ export default function Home() {
         trigger: containerRef.current,
         pin: true,
         scrub: 1,
-        snap: 1 / (sections.length - 1),
+        // snap: 1 / (sections.length - 1),
         end: () => "+=" + containerRef?.current?.offsetWidth
       }
     })
@@ -160,9 +161,10 @@ export default function Home() {
         <Mission value={visionRef} />
         <Team value={teamRef} />
         <News value={newsRef} />
-        <section ref={subscribeRef} className="panel purple">
-          four
-        </section>
+        <NewsLetter
+          value={subscribeRef}
+        />
+
       </div>
       <div ref={contactRef} className="lastContainer">
         Last Container
@@ -177,7 +179,7 @@ overflow-y: visible;
   height: unset;
   overflow-x: hidden;
   margin: 0;
-  /* background-color: #0; */
+  padding:0;
   box-sizing:border-box;
 
 
@@ -197,6 +199,7 @@ overflow-y: visible;
 .lastContainer {
   display: flex;
   height: 100vh;
+  width: 100vw;
   background: yellow;
 }
 
@@ -206,26 +209,11 @@ overflow-y: visible;
 }
 
 
-/* newsletter */
-
-
-
 
  .purple{
   background-color: orange;
  }
 
 
- /* @media (max-width:500px) {
-  .textFirst_p{
-    /* background-color: green; 
-
-  }
-
-  .text_first{
-    font-size: 18px;
-  }
-
- } */
 
 `

@@ -90,11 +90,12 @@ z-index: 200;
 height:50px;
 position: fixed;
 top:0px;
-padding: 10px;
+padding: 5px;
 display: flex;
 justify-content: space-around;
 font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 letter-spacing: 2px;
+
 
 
 
