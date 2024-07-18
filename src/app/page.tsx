@@ -5,14 +5,17 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import GlobalStyle from "./global.style";
-import LandPage from "@/components/landingpage/LandPage";
+import LandPage from "@/scenes/landingpage/LandPage";
 import Image from "next/image"
-import Mission from "@/components/mission/Mission";
-import TeamCard, { data, PersonI } from "@/components/team/TeamCard";
-import Team from "@/components/team/Team";
-import News from "@/components/news/News";
-import NavBar from "@/components/navBar/NavBar";
-import NewsLetter from "@/components/newsLetter/NewsLetter";
+import Mission from "@/scenes/mission/Mission";
+import Team from "@/scenes/team/Team";
+import News from "@/scenes/news/News";
+import NavBar from "@/scenes/navBar/NavBar";
+import NewsLetter from "@/scenes/newsLetter/NewsLetter";
+import Community from "@/scenes/community/Community";
+import Footer from "@/scenes/footer/Footer";
+import Socials from "@/scenes/socials/Social";
+
 gsap.registerPlugin(ScrollTrigger);
 
 
@@ -164,11 +167,10 @@ export default function Home() {
         <NewsLetter
           value={subscribeRef}
         />
-
       </div>
-      <div ref={contactRef} className="lastContainer">
-        Last Container
-      </div>
+        <Community/>
+        <Socials/>
+      <Footer/>
     </StyledHome>
   );
 }
@@ -192,15 +194,11 @@ overflow-y: visible;
 
 
 
-
- 
-
-
 .lastContainer {
   display: flex;
-  height: 100vh;
+  height: auto;
   width: 100vw;
-  background: yellow;
+  background:#fff;
 }
 
 .panel{
