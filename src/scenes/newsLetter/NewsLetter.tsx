@@ -195,4 +195,174 @@ clip-path: polygon(32% 0, 100% 0, 98% 96%, 0 100%);
    }
 }
 
+
+@media (max-width: 575.98px) {
+
+font-family: "Poppins";
+
+.overAllCont{
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+
+}
+
+
+
+.letterHead{
+ font-size: 20px;
+}
+
+.newsLetterCard{
+    width:80%;
+}
+
+
+.newsLetterCard button{
+   
+    font-size:18px;
+
+}
+
+.subText{
+    width:90%;
+}
+
+.glitch{
+    font-size: 30px;
+}
+
+
+
+
+
+
+}
+
+
+
+
+@media (min-width: 576px) and (max-width: 767px) {
+ background-color:blue;
+
+ font-family: "Poppins";
+
+.overAllCont{
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+
+}
+
+
+
+.letterHead{
+ font-size: 20px;
+}
+
+.newsLetterCard{
+    width:80%;
+}
+
+
+.newsLetterCard button{
+   
+    font-size:18px;
+
+}
+
+.subText{
+    width:90%;
+}
+
+.glitch{
+    font-size: 30px;
+}
+
+}
+
+
+@media (min-width: 766px) and (max-width: 991.98px) {
+
+    font-family: "Poppins";
+
+.overAllCont{
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+
+}
+
+
+
+.letterHead{
+ font-size: 20px;
+}
+
+.newsLetterCard{
+    width:80%;
+}
+
+
+.newsLetterCard button{
+   
+    font-size:18px;
+
+}
+
+.subText{
+    width:90%;
+}
+
+.glitch{
+    font-size: 30px;
+}
+
+ 
+
+}
+
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+background-color: purple;
+
+
+font-family: "Poppins";
+
+.overAllCont{
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+
+}
+
+
+
+.letterHead{
+ font-size: 20px;
+}
+
+.newsLetterCard{
+    width:80%;
+}
+
+
+.newsLetterCard button{
+   
+    font-size:18px;
+
+}
+
+.subText{
+    width:90%;
+}
+
+.glitch{
+    font-size: 30px;
+}
+
+
+
+}
+
+
+@media (min-width: 1200px) {
+background-color: #CE9934;
+
+
+}
+
+
 `

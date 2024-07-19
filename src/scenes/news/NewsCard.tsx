@@ -305,4 +305,54 @@ justify-content: flex-end;
 
 
 
+@media (max-width: 575.98px) {
+/* background-color: orange; */
+
+
+
+
+width: 90%;
+height:281px;
+}
+
+
+
+
+@media (min-width: 576px) and (max-width: 767px) {
+ background-color:blue;
+
+
+}
+
+
+@media (min-width: 766px) and (max-width: 991.98px) {
+background-color: green;
+
+
+ .newsLetterHeader .newsSubtitle{
+
+
+
+
+}
+
+}
+
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+background-color: purple;
+
+
+
+
+}
+
+
+@media (min-width: 1200px) {
+background-color: #CE9934;
+
+
+}
+
+
 `

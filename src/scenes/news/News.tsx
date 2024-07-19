@@ -7,13 +7,17 @@ import NewsCard from "./NewsCard"
 import { Pagination, Navigation } from 'swiper/modules';
 import { FaAnglesLeft, FaAnglesRight } from "react-icons/fa6";
 import { ParticlesNewComponent } from "../particle/NewsParticle";
+import { useMediaQuery } from '@mui/material';
 function News(prop: { value: React.LegacyRef<HTMLDivElement> }) {
+  const small = useMediaQuery('(max-width: 575.98px)');
+  const medium = useMediaQuery('(min-width:576px)');
+  const large = useMediaQuery('(min-width:1025px)');
   return (
 
     <StyledNews ref={prop.value} className='panel newsLetterContainer'>
       <ParticlesNewComponent id="particle" />
-    
-     <header className="newsLetterHeader">
+
+      <header className="newsLetterHeader">
         <p className="newsTitle">News & Events</p>
 
         <p className="newsSubtitle">
@@ -49,7 +53,7 @@ function News(prop: { value: React.LegacyRef<HTMLDivElement> }) {
 
 
           <Swiper
-            slidesPerView={3}
+            slidesPerView={small ? 1 : medium ? 2 : large ? 3 : "auto"}
             spaceBetween={10}
             autoplay={true}
 
@@ -62,7 +66,7 @@ function News(prop: { value: React.LegacyRef<HTMLDivElement> }) {
             className="mySwiper"
           >
             {data?.map((item) => (
-              <SwiperSlide  key={item.time} className="swiperSlide">
+              <SwiperSlide key={item.time} className="swiperSlide">
                 <NewsCard value={item} />
               </SwiperSlide>
             ))}
@@ -71,8 +75,8 @@ function News(prop: { value: React.LegacyRef<HTMLDivElement> }) {
 
         </main>
 
-      </main> 
-    </StyledNews>
+      </main>
+    </StyledNews >
   )
 }
 
@@ -81,7 +85,6 @@ export default News
 
 const StyledNews = styled.div`
 height: 100vh;
-/* background-color:#fff; */
 display: flex;
 flex-direction: row-reverse;
 width:100%;
@@ -89,8 +92,6 @@ align-items: center;
 background-color: transparent;
 font-family:"Poppins";
 position: relative;
-/* background-color: red; */
-
 justify-content:flex-end;
 
 #particle  .canva {
@@ -199,5 +200,204 @@ justify-content: center;
   .swiper-button-prev{
     right:-3px;
   }
+
+
+  @media (max-width: 575.98px) {
+flex-direction: column-reverse;
+justify-content: space-around;
+padding-top: 50px;
+
+.newsLetterHeader{
+width: 92%;
+height: auto;
+display: flex;
+align-items: center;
+flex-direction: column;
+}
+
+.newsList{
+  height: auto;
+  width: 80%;
+  /* display: none; */
+}
+
+.newsLetterHeader .newsTitle{
+  font-size: 18px;
+  text-align: center;
+  width: 100%;
+}
+.newsLetterHeader .newsSubtitle{
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+
+}
+
+.newsText{
+  font-size: 14px;
+  display: none;
+}
+
+}
+
+
+
+
+@media (min-width: 576px) and (max-width: 767px) {
+ flex-direction: column-reverse;
+justify-content: space-around;
+padding-top: 50px;
+
+.newsLetterHeader{
+width: 92%;
+height: auto;
+display: flex;
+align-items: center;
+flex-direction: column;
+}
+
+.newsList{
+  height: auto;
+  width: 90%;
+}
+
+.newsLetterHeader .newsTitle{
+  font-size: 30px;
+  text-align: center;
+  letter-spacing: 2px;
+  width: 100%;
+}
+.newsLetterHeader .newsSubtitle{
+  font-size: 20px;
+  width:80%;
+  margin:auto;
+  font-weight: 600;
+  text-align: center;
+
+}
+
+.mainContainer{
+  display: flex;
+flex-direction:row;
+align-items: center;
+justify-content: center;
+}
+
+.newsText{
+  font-size: 16px;
+  /* display: none; */
+}
+
+
+}
+
+
+@media (min-width: 766px) and (max-width: 991.98px) {
+/* background-color: green; */
+
+
+flex-direction: column-reverse;
+justify-content: space-around;
+padding-top: 50px;
+
+.newsLetterHeader{
+width: 92%;
+height: auto;
+display: flex;
+align-items: center;
+flex-direction: column;
+}
+
+.newsList{
+  height: auto;
+  width: 80%;
+}
+
+.newsLetterHeader .newsTitle{
+  font-size: 22px;
+  text-align: center;
+  width: 100%;
+}
+.newsLetterHeader .newsSubtitle{
+  font-size: 19px;
+  font-weight: 600;
+  text-align: center;
+
+}
+
+.mainContainer{
+  display: flex;
+flex-direction:row;
+align-items: center;
+justify-content: center;
+}
+
+.newsText{
+  font-size: 14px;
+  display: none;
+}
+
+
+
+}
+
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+/* background-color: purple; */
+
+flex-direction: column-reverse;
+justify-content: space-around;
+padding-top: 50px;
+
+.newsLetterHeader{
+width: 92%;
+height: auto;
+display: flex;
+align-items: center;
+flex-direction: column;
+}
+
+.newsList{
+  height: auto;
+  width: 70%;
+}
+
+.newsLetterHeader .newsTitle{
+  font-size: 30px;
+  text-align: center;
+  letter-spacing: 2px;
+  width: 100%;
+}
+.newsLetterHeader .newsSubtitle{
+  font-size: 20px;
+  width:80%;
+  margin:auto;
+  font-weight: 600;
+  text-align: center;
+
+}
+
+.mainContainer{
+  display: flex;
+flex-direction:row;
+align-items: center;
+justify-content: center;
+}
+
+.newsText{
+  font-size: 16px;
+  /* display: none; */
+}
+
+
+}
+
+
+/* @media (min-width: 1200px) {
+background-color: #CE9934;
+
+
+} */
+
 
 `

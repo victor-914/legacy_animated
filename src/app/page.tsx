@@ -163,12 +163,12 @@ export default function Home() {
       <div ref={containerRef} className="container">
         <Mission value={visionRef} />
         <Team value={teamRef} /> 
-         {/* <News value={newsRef} />
+        <News value={newsRef} />
         <NewsLetter
           value={subscribeRef}
-        />  */}
+        />  
       </div>
-        {/* <Community/> */}
+        <Community/>
         {/* <Socials/> */}
       <Footer/>
     </StyledHome>
