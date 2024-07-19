@@ -5,10 +5,11 @@ import { Pagination, Navigation } from 'swiper/modules';
 import styled from 'styled-components'
 import TeamCard, { data } from './TeamCard';
 import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
-
+import { useMediaQuery } from '@mui/material';
+import { maxWidth } from '@mui/system';
 function Team(prop: { value: React.LegacyRef<HTMLDivElement> | undefined; }) {
- 
 
+  const matches = useMediaQuery('(max-width:1025px)');
   return (
     <StyledTeam ref={prop.value} className="panel ourTeamContainer">
       <header className="missionTitle">
@@ -24,20 +25,20 @@ function Team(prop: { value: React.LegacyRef<HTMLDivElement> | undefined; }) {
       <main className='mainContainer'>
 
         <FaLongArrowAltLeft
-         className='nav swiper-button-next'
-        /> 
-         <FaLongArrowAltRight
+          className='nav swiper-button-next'
+        />
+        <FaLongArrowAltRight
           className=' nav swiper-button-prev'
-         />
+        />
         <Swiper
-          slidesPerView={2}
+          slidesPerView={matches ? 1 : 2}
           spaceBetween={10}
           autoplay={true}
-        
+
           navigation={{
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
-            disabledClass:'disabled-nav'
+            disabledClass: 'disabled-nav'
           }}
           modules={[Pagination, Navigation]}
           className="mySwiper"
@@ -199,11 +200,105 @@ const StyledTeam = styled.div`
   font-size: 25px;
   letter-spacing: 2px;
   word-spacing: 4px;
-  font-family:"Poppins";
+  font-family:"Poppins";  line-height: 2;
+  font-size: 25px;
+  letter-spacing: 2px;
+  word-spacing: 4px;
   padding: 18px;
 }
 
 
+
+
+@media (max-width: 575.98px) {
+
+
+.missionTitle{
+font-size: 40px;
+width: 90%;
+margin: auto;
+letter-spacing: 8px;
+}
+
+
+.mainContainer{
+  width: 95%;
+}
+
+
+.visionText{
+  text-align: center;
+  line-height: 1.4;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  word-spacing: 2px;
+  width:80%;
+}
+
+.swiper-button-next, .swiper-button-prev{
+    font-size: 20px;
+  }
+
+
+}
+
+
+
+
+@media (min-width: 576px) and (max-width: 767px) {
+
+ .visionText{
+  text-align: center;
+  line-height: 1.4;
+  font-size: 23px;
+  text-transform: uppercase;
+  word-spacing: 2px;
+  width:80%;
+}
+
+}
+
+
+@media (min-width: 766px) and (max-width: 991.98px) {
+
+.visionText{
+  text-align: center;
+  line-height: 1.4;
+  font-size: 25px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  word-spacing: 2px;
+  width:80%;
+}
+
+
+
+
+}
+
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+
+
+.visionText{
+  text-align: center;
+  line-height: 1.5;
+  font-size: 25px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  word-spacing: 2px;
+  width:80%;
+}
+
+
+}
+
+
+@media (min-width: 1200px) {
+
+
+}
 
 
 

@@ -162,14 +162,14 @@ export default function Home() {
       <LandPage value={landingPgRef} />
       <div ref={containerRef} className="container">
         <Mission value={visionRef} />
-        <Team value={teamRef} />
-        <News value={newsRef} />
+        <Team value={teamRef} /> 
+         {/* <News value={newsRef} />
         <NewsLetter
           value={subscribeRef}
-        />
+        />  */}
       </div>
-        <Community/>
-        <Socials/>
+        {/* <Community/> */}
+        {/* <Socials/> */}
       <Footer/>
     </StyledHome>
   );

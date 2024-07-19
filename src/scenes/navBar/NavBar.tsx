@@ -62,11 +62,11 @@ function NavBar(props: NavBarProps) {
         {
           props.data.map((item) => (
             <li
-             key={item._id}
-            onClick={() => item.ref.current?.scrollIntoView({
-              behavior:"smooth",
-            }) }
-            className="navList">
+              key={item._id}
+              onClick={() => item.ref.current?.scrollIntoView({
+                behavior: "smooth",
+              })}
+              className="navList">
               {item.title}
             </li>
           ))
@@ -127,4 +127,57 @@ letter-spacing: 2px;
   text-decoration-color: #fff;
   text-decoration-thickness:2px;
 }
+
+
+@media (max-width: 575.98px) { 
+
+  .nav{
+    display: none;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 780px) { 
+  .nav{
+    display: none;
+  }
+
+
+
+}
+
+
+
+
+
+
+
+@media (min-width: 766px) and (max-width: 991.98px) {
+background-color: green;
+
+
+.nav{
+    display: none;
+  }
+
+
+
+}
+
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+background-color: purple;
+
+.nav{
+    display: none;
+  }
+
+
+}
+
+
+/* @media (min-width: 1200px) {
+
+
+} */
+
 `

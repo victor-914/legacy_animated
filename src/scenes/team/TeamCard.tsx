@@ -16,9 +16,6 @@ interface TeamCardProps {
 
 
 
-
-
-
 export const data: PersonI[] = [
     {
         _id: "7475",
@@ -105,6 +102,47 @@ display: flex;
   font-size: 20px;
   line-height: 1.5;
  }
+
+
+ @media (max-width: 575.98px) {
+width: 350px;
+height:50vh;
+box-shadow: 5px 8px #CE9934;
+
+}
+
+
+
+
+@media (min-width: 576px) and (max-width: 767px) {
+
+
+}
+
+
+@media (min-width: 766px) and (max-width: 991.98px) {
+
+
+
+
+
+
+}
+
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+
+width: 400px;
+height:40vh;
+
+}
+
+
+@media (min-width: 1200px) {
+
+
+}
+
 
 
 

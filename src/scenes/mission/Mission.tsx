@@ -7,13 +7,13 @@ import ParticlesComponent from "../particle/Particles"
 
 function Mission(prop: { value: React.LegacyRef<HTMLElement> | undefined; }) {
 
-
+    // disable particle hover effect in mobile
 
     return (
         <StyledMission className="vision panel" ref={prop.value}>
 
             <ParticlesComponent id="particles" />
-                    
+
 
             <div className="visionText">
                 <q>
@@ -41,11 +41,9 @@ export default Mission
 
 const StyledMission = styled.section`
  background-color: #000;
-  /* background-color:transparent; */
   padding-top:70px;
-  /* width: 100%; */
-  /* height:100%; */
   position: relative;
+  text-transform: uppercase;
 
   #particles   {
   z-index:-1;
@@ -85,7 +83,7 @@ const StyledMission = styled.section`
 
 }
 
- .gamePad{
+.gamePad{
   width: 100%;
   display: flex;
   align-items: flex-start;
@@ -99,6 +97,153 @@ const StyledMission = styled.section`
   height: 100%;
   transform:translateY(-110px);
  }
+
+
+ @media (max-width: 575.98px) { 
+
+padding-top: 40px;
+
+
+.visionText{
+  width:92%;
+  padding-top: 0px;
+  font-family: "Poppins";
+  line-height: 1.5;
+  font-size: 20px;
+  letter-spacing: 0px;
+  text-transform: uppercase;
+  padding: 0 8px 0px 8px;
+}
+
+.missionTitle{
+  font-size: 50px;
+  letter-spacing: 0px;
+  width: 100%;
+  height:10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gamePad{
+  height: 40vh;
+ 
+}
+
+.imgResize{
+width: 100%;
+height: 100%;
+transform:translateY(-40px);
+}
+
+}
+
+@media (min-width: 576px) and (max-width: 767px) { 
+
+  .visionText{
+  width:95%;
+}
+
+
+.visionText{
+  width:80%;
+  padding-top: 0px;
+  font-family: "Poppins";
+  line-height: 1.5;
+  font-size: 30px;
+  letter-spacing: 0px;
+  text-transform: uppercase;
+  padding: 0 8px 0px 8px;
+}
+
+.missionTitle{
+  font-size: 80px;
+  letter-spacing: 0px;
+  width: 100%;
+  height:auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gamePad{
+  height: 40vh;
+ 
+}
+
+.imgResize{
+width: 100%;
+height: 100%;
+transform:translateY(-20px);
+}
+}
+
+@media (min-width: 766px) and (max-width: 991.98px) { 
+
+.visionText{
+  width:80%;
+  line-height: 1.5;
+  font-size: 35px;
+}
+
+.missionTitle{
+  font-size: 80px;
+  letter-spacing: 0px;
+  width: 100%;
+  height:auto;
+
+}
+
+.gamePad{
+  height: 40vh;
+ 
+}
+
+.imgResize{
+width: 90%;
+height: 100%;
+}
+
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+
+
+
+.visionText{
+  width:80%;
+  line-height: 1.5;
+  font-size: 40px;
+}
+
+.missionTitle{
+  font-size: 80px;
+  letter-spacing: 0px;
+  width: 100%;
+  height:auto;
+
+}
+
+.gamePad{
+  height: 40vh;
+ 
+}
+
+.imgResize{
+width: 90%;
+height: 100%;
+}
+
+}
+/* 
+@media (min-width: 1200px) { 
+background-color: #CE9934;
+
+}  */
+
+
+
+
 
 
 
