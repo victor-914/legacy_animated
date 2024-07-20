@@ -34,21 +34,21 @@ function Socials() {
                             <FontAwesomeIcon icon={faFacebook} size="4x" />
                         </a> */}
                         <a target='_blank' href="https://x.com/legacygaming_ng" className="twitter social">
-                            <FontAwesomeIcon icon={faTwitter} size="4x" />
+                            <FontAwesomeIcon icon={faTwitter} size="3x" />
                         </a>
                         <a href="https://www.instagram.com/legacygamingng"
                             className="instagram social">
-                            <FontAwesomeIcon icon={faInstagram} size="4x" />
+                            <FontAwesomeIcon icon={faInstagram} size="3x" />
                         </a>
 
                         <a href="https://www.tiktok.com/@legacygamingng"
                             className="tiktok social">
-                            <FontAwesomeIcon icon={faTiktok} size="4x" />
+                            <FontAwesomeIcon icon={faTiktok} size="3x" />
                         </a>
 
                         <a href="https://t.me/+TBWmxWA9lF42Yzc0"
                             className="telegram social">
-                            <FontAwesomeIcon icon={faTelegram} size="4x" />
+                            <FontAwesomeIcon icon={faTelegram} size="3x" />
                         </a>
                         
                     </div>
