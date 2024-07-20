@@ -84,10 +84,6 @@ background-size: cover;
 background-color: #000;
 position:relative;
 background-repeat: no-repeat;
-/* clip-path: polygon(51% 0, 100% 0, 100% 99%, 12% 100%); */
-/* clip-path: polygon(32% 0, 100% 0, 98% 96%, 0 100%); */
-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-clip-path: polygon(100% 0, 0 0, 54% 100%);
 clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 76%);
 
     }
@@ -173,7 +169,6 @@ a.social {
   margin: 0 1rem;
   transition: transform 250ms;
   display: inline-block;
-  /* outline: 2px solid red; */
 }
 
 a.social:hover {
@@ -267,5 +262,64 @@ a.tiktok {
       transform: translate(0);
    }
 }
+
+
+@media (max-width: 575.98px) {
+background-color: #000;
+
+.overAllCont{
+    clip-path: polygon(11% 9%, 100% 0, 100% 100%, 0% 100%);
+}
+
+.glitch{
+    font-size: 30px;
+}
+
+.social-container {
+  padding: 10px;
+  width:80%;
+
+}
+
+
+}
+
+
+
+
+@media (min-width: 576px) and (max-width: 767px) {
+    .overAllCont{
+    clip-path: polygon(11% 9%, 100% 0, 100% 100%, 0% 100%);
+}
+}
+
+
+@media (min-width: 766px) and (max-width: 991.98px) {
+
+    .overAllCont{
+    clip-path: polygon(11% 9%, 100% 0, 100% 100%, 0% 100%);
+}
+
+
+
+
+}
+
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+
+    .overAllCont{
+    clip-path: polygon(11% 9%, 100% 0, 100% 100%, 0% 100%);
+}
+
+
+}
+
+/* 
+@media (min-width: 1200px) {
+background-color: #CE9934;
+
+
+} */
 
 `

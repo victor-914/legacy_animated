@@ -156,14 +156,7 @@ function Form() {
 
 	return (
 		<StyledForm>
-			<header className='formHeader'>
-				<Typography component="h1" align='center' variant="h5" className="hdhd">
-
-					<div className="glitch-wrapper_form">
-						<div className="glitch_form" data-text="Welcome to Legacy Gaming Community!">Welcome to Legacy Gaming Community!</div>
-					</div>
-				</Typography>
-			</header>
+			
 			<form className="registration-form">
 
 				{formArr.map((item) => {
@@ -205,7 +198,6 @@ const StyledForm = styled.section`
    
 
   .formHeader{
-	background-color: red;
 	width:70%;
 	margin:auto;
   }
@@ -259,6 +251,59 @@ const StyledForm = styled.section`
       transform: skewX(10deg) skewY(-10deg);
    }
 }
+
+
+
+
+
+@media (max-width: 575.98px) {
+
+.registration-form{
+	width:90%;
+ }
+
+}
+
+
+
+
+@media (min-width: 576px) and (max-width: 767px) {
+
+ .registration-form{
+	width:90%;
+ }
+
+}
+
+
+@media (min-width: 766px) and (max-width: 991.98px) {
+
+
+
+.registration-form{
+	width:90%;
+ }
+
+
+}
+
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+
+.registration-form{
+	width:90%;
+ }
+
+
+}
+
+
+/* @media (min-width: 1200px) {
+background-color: #CE9934;
+
+
+} */
+
 
 
 

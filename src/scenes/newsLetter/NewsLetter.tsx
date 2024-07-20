@@ -358,11 +358,11 @@ font-family: "Poppins";
 }
 
 
-@media (min-width: 1200px) {
+/* @media (min-width: 1200px) {
 background-color: #CE9934;
 
 
-}
+} */
 
 
 `

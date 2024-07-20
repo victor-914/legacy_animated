@@ -169,7 +169,7 @@ export default function Home() {
         />  
       </div>
         <Community/>
-        {/* <Socials/> */}
+        <Socials/>
       <Footer/>
     </StyledHome>
   );

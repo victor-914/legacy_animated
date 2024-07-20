@@ -8,7 +8,7 @@ function Community() {
       <header>
         <div className="wrapper">
           <svg>
-            <text x="50%" y="50%" dy=".35em" text-anchor="middle">
+            <text className='joinText' x="50%" y="50%" dy=".35em" text-anchor="middle">
               Join our Community
             </text>
           </svg>
@@ -56,5 +56,45 @@ svg text {
 }
 
 .wrapper {background-color: #FFFFFF};
+
+@media (max-width: 575.98px) {
+
+ .joinText{
+  font-size:30px;
+ }
+
+}
+
+
+
+
+@media (min-width: 576px) and (max-width: 767px) {
+
+
+}
+
+
+@media (min-width: 766px) and (max-width: 991.98px) {
+
+
+.joinText{
+  font-size:45px;
+ }
+
+
+
+}
+
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+
+
+
+
+}
+
+
+
+
 
 `
