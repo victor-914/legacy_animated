@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-// import ParticlesComponent from '../particle/Particles'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faYoutube,
@@ -15,7 +14,6 @@ function Socials() {
     return (
         <StyledNewsLetter className="panel">
             <div className='overAllCont'>
-                {/* <ParticlesComponent id="particle" /> */}
 
                 <main className='container_news'>
                 <header className='letterHead'>

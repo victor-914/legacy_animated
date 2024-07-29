@@ -17,30 +17,7 @@ function NavBar(props: NavBarProps) {
 
   const navRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    const handleScroll = () => {
-      // if (window.scrollY < 50) {
-      //   gsap.to(navRef.current, {
-      //     backgroundColor: '#ce9934',
-      //     color: '#fff',
-      //     duration: 0
-      //   });
-      // } 
-      // else {
-      //   gsap.to(navRef.current, {
-      //     backgroundColor: 'transparent', 
-      //     color: '#ce9934',
-      //     duration: 0
-      //   });
-      // }
-    };
 
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
 
 
 
@@ -109,7 +86,12 @@ function NavBar(props: NavBarProps) {
                 }}
                 className="mobile-navList"
               >
-                {item.title}
+                <div className="glitch-wrapper">
+                  <div className="glitch" data-text={item.title}>
+                  {item.title}
+                  </div>
+                </div>
+               
               </li>
             ))}
           </ul>
@@ -264,6 +246,70 @@ justify-content: center;
 }
 
 
+
+.glitch-wrapper {
+   width: 100%;
+   height: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+   background-color: transparent;
+}
+
+.glitch {
+   position: relative;
+   font-size: 24px;
+   font-weight: bold;
+   color: #FFFFFF;
+   letter-spacing: 3px;
+   z-index: 1;
+   text-transform: uppercase;
+   text-shadow: 2px 3px #CE9934;
+}
+
+.glitch:before,
+.glitch:after {
+   display: block;
+   content: attr(data-text);
+   position: absolute;
+   top: 0;
+   left: 0;
+   opacity: 0.8;
+}
+
+.glitch:before {
+   animation: glitch-it 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+   color: #CE9934;
+   z-index: -1;
+}
+
+.glitch:after {
+   animation: glitch-it 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
+   color: #F73DFF;
+   z-index: -2;
+}
+
+@keyframes glitch-it {
+   0% {
+      transform: translate(0);
+   }
+   20% {
+      transform: translate(-2px, 2px);
+   }
+   40% {
+      transform: translate(-2px, -2px);
+   }
+   60% {
+      transform: translate(2px, 2px);
+   }
+   80% {
+      transform: translate(2px, -2px);
+   }
+   to {
+      transform: translate(0);
+   }
+}
 
 
 @media (max-width: 575.98px) { 
