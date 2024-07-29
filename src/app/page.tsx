@@ -4,9 +4,7 @@ import styled from "styled-components";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import GlobalStyle from "./global.style";
 import LandPage from "@/scenes/landingpage/LandPage";
-import Image from "next/image"
 import Mission from "@/scenes/mission/Mission";
 import Team from "@/scenes/team/Team";
 import News from "@/scenes/news/News";
@@ -109,7 +107,7 @@ export default function Home() {
         scrub: true,
         start: "top 70%",
         end: "top 0%",
-        markers: true,
+        // markers: true,
       },
       y: 90,
       duration: 1,
@@ -121,7 +119,7 @@ export default function Home() {
           scrub: true,
           start: "top 70%",
           end: "top 0%",
-          markers: true,
+          // markers: true,
         },
         y: -90,
         duration: 1,
