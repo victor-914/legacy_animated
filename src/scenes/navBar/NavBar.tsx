@@ -1,5 +1,5 @@
 "use client"
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -7,6 +7,7 @@ import Image from "next/image";
 import { MenuI } from '@/app/page';
 import { AiOutlineMenu } from "react-icons/ai";
 import { IoMdClose } from "react-icons/io";
+import Link from 'next/link';
 gsap.registerPlugin(ScrollTrigger);
 
 interface NavBarProps {
@@ -16,12 +17,6 @@ interface NavBarProps {
 function NavBar(props: NavBarProps) {
 
   const navRef = useRef<HTMLDivElement>(null)
-
-
-
-
-
-
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -45,16 +40,33 @@ function NavBar(props: NavBarProps) {
 
         <main className='nav'>
           {
-            props.data.map((item) => (
-              <li
-                key={item._id}
-                onClick={() => item.ref.current?.scrollIntoView({
-                  behavior: "smooth",
-                })}
-                className="navList">
-                {item.title}
-              </li>
-            ))
+            props.data.map((item) => {
+              if (item.title === "News") {
+                return (
+
+                  <Link
+                  className="navList"
+                    style={{
+                      color: "#ce9934",
+                      textDecoration: "none",
+                    }}
+                    href={`/${item.title}`}>
+                    {item.title}
+                  </Link>
+                )
+              } else {
+                return (
+                  <li
+                    key={item._id}
+                    onClick={() => item?.ref?.current?.scrollIntoView({
+                      behavior: "smooth",
+                    })}
+                    className="navList">
+                    {item.title}
+                  </li>
+                )
+              }
+            })
           }
 
         </main>
@@ -75,25 +87,52 @@ function NavBar(props: NavBarProps) {
 
         <nav className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
           <ul>
-            {props.data.map((item) => (
-              <li
-                key={item._id}
-                onClick={() => {
-                  toggleMenu();
-                  item.ref.current?.scrollIntoView({
-                    behavior: "smooth",
-                  });
-                }}
-                className="mobile-navList"
-              >
-                <div className="glitch-wrapper">
-                  <div className="glitch" data-text={item.title}>
-                  {item.title}
-                  </div>
-                </div>
-               
-              </li>
-            ))}
+            {props.data.map((item) => {
+
+              if (item.title === "News") {
+                return (
+                  <Link style={{
+                    color: "#ce9934",
+                    textDecoration: "none",
+                  }}
+                    href={`/${item.title}`}>
+                    <div style={{
+                      height: "auto"
+                    }}
+                      className="glitch-wrapper">
+                      <div className="glitch" data-text={item.title}>
+
+                        {item.title}
+                      </div>
+                    </div>
+                  </Link>
+
+                )
+              } else {
+                return (
+                  <li
+                    key={item._id}
+                    onClick={() => {
+                      toggleMenu();
+                      item?.ref?.current?.scrollIntoView({
+                        behavior: "smooth",
+                      });
+                    }}
+                    className="mobile-navList"
+                  >
+
+                    <div className="glitch-wrapper">
+                      <div className="glitch" data-text={item.title}>
+                        {item.title}
+                      </div>
+                    </div>
+
+                  </li>
+                )
+              }
+
+            })}
+
           </ul>
         </nav>
 
@@ -123,7 +162,7 @@ background: rgba(255, 255, 255, 0.15);
   -webkit-backdrop-filter: blur(10px); 
   border-bottom: 1px solid rgba(255, 255, 255, 0.129); 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-
+ cursor: pointer;
 
 
   .navBarCont{
@@ -167,14 +206,7 @@ justify-content: space-between;
   text-decoration-thickness:2px;
 }
 
-.menuCOnt{
-height:100%;
-width:auto;
-display:flex;
-align-items: center;
-justify-content: center;
 
-}
 .menu{
   font-size: 30px;
   color:#ce9934;
@@ -312,6 +344,15 @@ justify-content: center;
 }
 
 
+@media (min-width: 1200px){
+  .menuCont{
+    display: none;
+  }
+}
+
+
+
+
 @media (max-width: 575.98px) { 
 
   .nav{
@@ -330,12 +371,7 @@ justify-content: center;
 
 
 
-
-
-
-
 @media (min-width: 766px) and (max-width: 991.98px) {
-background-color: green;
 
 
 .nav{
@@ -348,7 +384,6 @@ background-color: green;
 
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
-background-color: purple;
 
 .nav{
     display: none;
@@ -358,10 +393,14 @@ background-color: purple;
 }
 
 
-/* @media (min-width: 1200px) {
+ @media (min-width: 1200px) {
 
 
-} */
+  .navBarCont{
+    width:95%;
+} 
+
+ }
 
 
 

@@ -20,8 +20,10 @@ gsap.registerPlugin(ScrollTrigger);
 export interface MenuI {
   _id: string,
   title: String,
-  ref: React.RefObject<HTMLDivElement>,
+  ref: React.RefObject<HTMLDivElement> | null,
 }
+
+
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -31,11 +33,6 @@ export default function Home() {
   const newsRef = useRef<HTMLDivElement>(null);
   const teamRef = useRef<HTMLDivElement>(null);
   const subscribeRef = useRef<HTMLDivElement>(null);
-  const contactRef = useRef<HTMLDivElement>(null);
-
-
-
-
 
 
 
@@ -65,9 +62,18 @@ export default function Home() {
       title: "Subscribe",
       ref: subscribeRef,
     },
-
-
+    {
+      _id: "jeredhf",
+      title: "News",
+      ref: null,
+    },
+  
+  
   ]
+
+
+
+
 
   useGSAP(() => {
     const sections = gsap.utils.toArray(".panel")
@@ -107,7 +113,6 @@ export default function Home() {
         scrub: true,
         start: "top 70%",
         end: "top 0%",
-        // markers: true,
       },
       y: 90,
       duration: 1,
@@ -119,7 +124,6 @@ export default function Home() {
           scrub: true,
           start: "top 70%",
           end: "top 0%",
-          // markers: true,
         },
         y: -90,
         duration: 1,
@@ -160,15 +164,15 @@ export default function Home() {
       <LandPage value={landingPgRef} />
       <div ref={containerRef} className="container">
         <Mission value={visionRef} />
-        <Team value={teamRef} /> 
+        <Team value={teamRef} />
         <News value={newsRef} />
         <NewsLetter
           value={subscribeRef}
-        />  
+        />
       </div>
-        <Community/>
-        <Socials/>
-      <Footer/>
+      <Community />
+      <Socials />
+      <Footer />
     </StyledHome>
   );
 }
