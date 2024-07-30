@@ -2,9 +2,11 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Head from "next/head";
-import  { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { RiArrowGoBackLine } from "react-icons/ri";
-function News() {
+
+
+export default function News() {
   const router = useRouter()
   const [currentPage, setCurrentPage] = useState(1);
   // const { data, error, isLoading } = useSWR(
@@ -18,22 +20,22 @@ function News() {
 
   return (
     <StyledNews>
-      {/* <Head>
-        {/* <title>News</title> 
-      </Head> */}
+      <Head>
+        <title>News</title>
+      </Head>
 
-      <nav 
-       onClick={() => router.push("/")}
-      style={{
-        backgroundColor:'#ce9934'
-      }}>
+      <nav
+        onClick={() => router.push("/")}
+        style={{
+          backgroundColor: '#ce9934'
+        }}>
         <button
-         style={{
-          padding:"10px",
-          display:'flex',
-          alignItems:'center'
-       
-         }}
+          style={{
+            padding: "10px",
+            display: 'flex',
+            alignItems: 'center'
+
+          }}
         >
           <RiArrowGoBackLine />
         </button>
@@ -65,7 +67,6 @@ function News() {
   );
 }
 
-export default News;
 
 const StyledNews = styled.section`
   height: auto;
@@ -174,7 +175,7 @@ const StyledNews = styled.section`
 //   }
 // }
 
-export const NewsBox = () => {
+ const NewsBox = () => {
   return (
     <StyledNewBox
     // onClick={() => router.replace(`/news/`)}

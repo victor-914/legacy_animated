@@ -16,13 +16,11 @@ import Socials from "@/scenes/socials/Social";
 import AudioPlayer from "@/components/audioPlayer/AudioPlayer";
 gsap.registerPlugin(ScrollTrigger);
 
-
 export interface MenuI {
   _id: string,
   title: String,
   ref: React.RefObject<HTMLDivElement> | null,
 }
-
 
 
 export default function Home() {
@@ -32,8 +30,6 @@ export default function Home() {
   const newsRef = useRef<HTMLDivElement>(null);
   const teamRef = useRef<HTMLDivElement>(null);
   const subscribeRef = useRef<HTMLDivElement>(null);
-
-
 
   const menu = [
     {
@@ -69,10 +65,6 @@ export default function Home() {
   
   
   ]
-
-
-
-
 
   useGSAP(() => {
     const sections = gsap.utils.toArray(".panel")
@@ -130,11 +122,6 @@ export default function Home() {
       })
 
 
-
-
-
-
-
     // total navigation
     gsap.to(".panel", {
       xPercent: -100 * (sections.length - 1),
@@ -143,15 +130,10 @@ export default function Home() {
         trigger: containerRef.current,
         pin: true,
         scrub: 1,
-        // snap: 1 / (sections.length - 1),
+        snap: 1 / (sections.length - 1),
         end: () => "+=" + containerRef?.current?.offsetWidth
       }
     })
-
-
-
-
-
 
   }, { scope: containerRef })
 
@@ -211,7 +193,7 @@ overflow-y: visible;
 
 
  .purple{
-  background-color: orange;
+  /* background-color: orange; */
  }
 
 
