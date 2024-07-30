@@ -1,0 +1,50 @@
+.audioPlayer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+   background-color: transparent;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+  }
+  
+  .disc {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: url('/public/gamepad.png') no-repeat center center;
+    background-size: cover;
+    transition: transform 0.5s linear;
+  }
+  
+  .playing {
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .playPauseButton {
+    margin-left: 1rem;
+    padding: 0.5rem 1rem;
+    background: none;
+    border: 1px solid white;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 5px;
+  }
+  
+  .playPauseButton:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  

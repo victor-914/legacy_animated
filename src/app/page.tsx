@@ -13,7 +13,7 @@ import NewsLetter from "@/scenes/newsLetter/NewsLetter";
 import Community from "@/scenes/community/Community";
 import Footer from "@/scenes/footer/Footer";
 import Socials from "@/scenes/socials/Social";
-
+import AudioPlayer from "@/components/audioPlayer/AudioPlayer";
 gsap.registerPlugin(ScrollTrigger);
 
 
@@ -29,7 +29,6 @@ export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
   const landingPgRef = useRef<HTMLDivElement>(null);
   const visionRef = useRef<HTMLDivElement>(null);
-
   const newsRef = useRef<HTMLDivElement>(null);
   const teamRef = useRef<HTMLDivElement>(null);
   const subscribeRef = useRef<HTMLDivElement>(null);
@@ -64,7 +63,7 @@ export default function Home() {
     },
     {
       _id: "jeredhf",
-      title: "News",
+      title: "news",
       ref: null,
     },
   
@@ -173,6 +172,7 @@ export default function Home() {
       <Community />
       <Socials />
       <Footer />
+      <AudioPlayer/>
     </StyledHome>
   );
 }
