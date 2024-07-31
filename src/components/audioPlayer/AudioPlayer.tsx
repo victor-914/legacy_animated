@@ -115,27 +115,7 @@ export default function AudioPlayer() {
                 <div className="colum1">
                   <div className="row"></div>
                 </div>
-                <div className="colum1">
-                  <div className="row"></div>
-                </div>
-                <div className="colum1">
-                  <div className="row"></div>
-                </div>
-                <div className="colum1">
-                  <div className="row"></div>
-                </div>
-                <div className="colum1">
-                  <div className="row"></div>
-                </div>
-                <div className="colum1">
-                  <div className="row"></div>
-                </div>
-                <div className="colum1">
-                  <div className="row"></div>
-                </div>
-                <div className="colum1">
-                  <div className="row"></div>
-                </div>
+                
 
               </div>
 
@@ -190,7 +170,7 @@ button:hover{
 font-size: 20px;
 color:#000;
 border-radius: 55%;
-background: linear-gradient(45deg, #ffb700, yellow, #738000);
+background: linear-gradient(45deg, #ffb700, #ce9934, #738000);
 }
 
 

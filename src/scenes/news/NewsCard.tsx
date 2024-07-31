@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Image from "next/image";
-
+import { useRouter } from "next/navigation"
 export interface NewsI {
     title: string;
     image_src: string;
@@ -21,85 +21,63 @@ interface NewsCardProps {
 
 export const data: NewsI[] = [
     {
-        "time": "14:00",
-        "date": "2024-07-10",
-        "title": "Summer Invitational",
-        "location": "Los Angeles, CA",
-        "category": "Tournament",
+        "time": "0:00",
+        "date": "coming soon",
+        "title": "UNEC ESPORT TOUR",
+        "location": "UNEC, ENUGU",
+        "category": "Tour",
         "image_src": "/img/1.jpg"
     },
     {
-        "time": "18:00",
-        "date": "2024-07-12",
-        "title": "Pro League Finals",
-        "location": "New York, NY",
-        "category": "Championship",
+        "time": "0:00",
+        "date": "coming soon",
+        "title": "UNN ESPORT TOUR",
+        "location": "UNN, NSUKKA",
+        "category": "Tour",
         "image_src": "/img/2.jpg"
     },
     {
-        "time": "10:00",
-        "date": "2024-07-15",
-        "title": "Community Cup",
-        "location": "Chicago, IL",
-        "category": "Community Tournament",
+        "time": "0:00",
+        "date": "coming soon",
+        "title": "ESUT ESPORT TOUR",
+        "location": "UNEC, ENUGU",
+        "category": "Tour",
         "image_src": "/img/3.jpg"
     },
     {
-        "time": "16:00",
-        "date": "2024-07-18",
-        "title": "Esports Expo",
-        "location": "San Francisco, CA",
-        "category": "Convention",
+        "time": "0:00",
+        "date": "coming soon",
+        "title": "UNEC ESPORT TOUR",
+        "location": "UNEC, ENUGU",
+        "category": "Tour",
         "image_src": "/img/4.jpg"
     },
     {
-        "time": "12:00",
-        "date": "2024-07-20",
-        "title": "Regional Qualifiers",
-        "location": "Houston, TX",
-        "category": "Qualifier",
+        "time": "0:00",
+        "date": "coming soon",
+        "title": "UNEC ESPORT TOUR",
+        "location": "UNEC, ENUGU",
+        "category": "Tour",
         "image_src": "/img/5.jpg"
     },
     {
-        "time": "19:00",
-        "date": "2024-07-22",
-        "title": "Summer Showdown",
-        "location": "Miami, FL",
-        "category": "Showmatch",
+        "time": "0:00",
+        "date": "coming soon",
+        "title": "UNEC ESPORT TOUR",
+        "location": "UNEC, ENUGU",
+        "category": "Tour",
         "image_src": "/img/6.jpg"
     },
     {
-        "time": "11:00",
-        "date": "2024-07-25",
-        "title": "University Battle",
-        "location": "Boston, MA",
-        "category": "Collegiate",
+        "time": "0:00",
+        "date": "coming soon",
+        "title": "UNEC ESPORT TOUR",
+        "location": "UNEC, ENUGU",
+        "category": "Tour",
         "image_src": "/img/7.jpg"
     },
-    {
-        "time": "17:00",
-        "date": "2024-07-28",
-        "title": "Charity Stream",
-        "location": "Seattle, WA",
-        "category": "Charity",
-        "image_src": "/img/8.jpg"
-    },
-    {
-        "time": "13:00",
-        "date": "2024-07-30",
-        "title": "International Open",
-        "location": "Las Vegas, NV",
-        "category": "Open Tournament",
-        "image_src": "/img/9.jpg"
-    },
-    {
-        "time": "15:00",
-        "date": "2024-08-02",
-        "title": "Grand Championship",
-        "location": "Atlanta, GA",
-        "category": "Championship",
-        "image_src": "/img/1.jpg"
-    }
+
+
 
 ]
 
@@ -107,6 +85,7 @@ export const data: NewsI[] = [
 function NewsCard({ value }: NewsCardProps) {
 
     const [show, setShow] = useState(false);
+    const router = useRouter()
 
     return (
         <StyledNewsCard id="main"
@@ -116,8 +95,8 @@ function NewsCard({ value }: NewsCardProps) {
                 backgroundImage: `url(${value.image_src})`,
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
-
+                backgroundSize: "contain",
+           
             }}>
 
             <div className='cover'>
@@ -127,7 +106,6 @@ function NewsCard({ value }: NewsCardProps) {
 
 
 
-            {/* <main className='container-card'> */}
             <div className='catergory hover'>
                 {value.category}
             </div>
@@ -146,7 +124,7 @@ function NewsCard({ value }: NewsCardProps) {
 
             <span className='dot'></span>
             <aside className='readMoreCont'>
-                <div className='readMore hover'>read more</div>
+                <div onClick={() => router.push("/news")} className='readMore hover'>read more</div>
             </aside>
             {/* </main> */}
         </StyledNewsCard>
@@ -158,7 +136,7 @@ export default NewsCard
 
 
 const StyledNewsCard = styled.div`
-width: 281px;
+width: 100%;
 height:481px;
 border: 1px solid #08070799;
 border-radius:8px;
@@ -171,7 +149,7 @@ justify-content: flex-end;
 cursor:pointer;
 
 &:hover .cover{
-    background-color: #000000bb;
+    background-color: #000000c1;
     transition: 0.2s;
 
 }
@@ -223,7 +201,7 @@ justify-content: flex-end;
     position: absolute;
     width: 100%;
     z-index:1;
-    background-color: #00000099;
+    background-color:transparent;
     height: 100%;
 }
 

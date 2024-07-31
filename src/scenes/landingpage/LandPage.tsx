@@ -27,7 +27,7 @@ function LandPage(prop: { value: React.LegacyRef<HTMLElement> | undefined; }) {
 
             </div>
 
-            <p className="textFirst_p">Empowering gamers across the continent...</p>
+            <p className="textFirst_p">O gini Bu esport</p>
 
 
             <div className="cover_first">

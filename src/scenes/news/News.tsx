@@ -53,10 +53,9 @@ function News(prop: { value: React.LegacyRef<HTMLDivElement> }) {
 
 
           <Swiper
-            slidesPerView={small ? 1 : medium ? 2 : large ? 3 : "auto"}
+            slidesPerView={1}
             spaceBetween={10}
             autoplay={true}
-
             navigation={{
               nextEl: '.swiper-button-next',
               prevEl: '.swiper-button-prev',
@@ -203,7 +202,7 @@ justify-content: center;
 
 
   @media (max-width: 575.98px) {
-flex-direction: column-reverse;
+flex-direction: column;
 justify-content: space-around;
 padding-top: 50px;
 
@@ -218,7 +217,6 @@ flex-direction: column;
 .newsList{
   height: auto;
   width: 80%;
-  /* display: none; */
 }
 
 .newsLetterHeader .newsTitle{
@@ -293,7 +291,6 @@ justify-content: center;
 
 
 @media (min-width: 766px) and (max-width: 991.98px) {
-/* background-color: green; */
 
 
 flex-direction: column-reverse;
@@ -343,7 +340,6 @@ justify-content: center;
 
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
-/* background-color: purple; */
 
 flex-direction: column-reverse;
 justify-content: space-around;
@@ -393,11 +389,6 @@ justify-content: center;
 }
 
 
-/* @media (min-width: 1200px) {
-background-color: #CE9934;
-
-
-} */
 
 
 `
