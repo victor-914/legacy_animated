@@ -1,110 +1,156 @@
 // components/AudioPlayer.js
 "use client"
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from '../audioPlayer/audioplayer.module.css';
 import styled from 'styled-components';
 import { BsPauseCircleFill } from "react-icons/bs";
 import { IoPlayCircle } from "react-icons/io5";
 
-export default function AudioPlayer() {
+export default function AudioPlayer(prop: { value: React.RefObject<HTMLAudioElement> }) {
   const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = useRef<HTMLAudioElement>(null);
-  const discRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(true);
+  const lastScrollY = useRef(0);
+  
+
+  useEffect(() => {
+    if (prop?.value?.current) {
+      prop.value.current.loop = true;
+      setIsPlaying(true)
+      prop?.value?.current.play();
+
+    }
+    const handleScroll = () => {
+      if (window.scrollY > lastScrollY.current) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+      lastScrollY.current = window.scrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+
+  useEffect(() => {
+    prop?.value?.current?.play()
+  }, [prop?.value?.current]);
+
+
 
   const togglePlayPause = () => {
-    if (isPlaying) {
-      audioRef?.current?.pause();
-      discRef?.current?.classList.remove(styles.playing);
-    } else {
-      audioRef?.current?.play();
-      discRef?.current?.classList.add(styles.playing);
-    }
+
     setIsPlaying(!isPlaying);
+
+    if (prop.value.current) {
+      if (isPlaying) {
+        prop.value.current.pause();
+      } else {
+        prop.value.current.play();
+      }
+    }
   };
 
   return (
-    <StyledAudio className={styles.audioPlayer}>
-      {/* <div className={styles.disc} ref={discRef}></div> */}
-      <button onClick={togglePlayPause} className={styles.playPauseButton}>
-        {isPlaying ? <BsPauseCircleFill   className='playIcons' /> : <IoPlayCircle className='playIcons' />}
-      </button>
-      <audio ref={audioRef} src="/audio/videoplayback.mp3" />
 
-      <div className="container-audio">
-        <div className="colum1">
-          <div className="row"></div>
-        </div>
-        <div className="colum1">
-          <div className="row"></div>
-        </div>
-        <div className="colum1">
-          <div className="row"></div>
-        </div>
-        <div className="colum1">
-          <div className="row"></div>
-        </div>
-        <div className="colum1">
-          <div className="row"></div>
-        </div>
-        <div className="colum1">
-          <div className="row"></div>
-        </div>
-        <div className="colum1">
-          <div className="row"></div>
-        </div>
-        <div className="colum1">
-          <div className="row"></div>
-        </div>
-        <div className="colum1">
-          <div className="row"></div>
-        </div>
-        <div className="colum1">
-          <div className="row"></div>
-        </div>
-        <div className="colum1">
-          <div className="row"></div>
-        </div>
-        <div className="colum1">
-          <div className="row"></div>
-        </div>
-        <div className="colum1">
-          <div className="row"></div>
-        </div>
-        <div className="colum1">
-          <div className="row"></div>
-        </div>
-        <div className="colum1">
-          <div className="row"></div>
-        </div>
-        <div className="colum1">
-          <div className="row"></div>
-        </div>
-        <div className="colum1">
-          <div className="row"></div>
-        </div>
-        <div className="colum1">
-          <div className="row"></div>
-        </div>
-        {/* <div className="colum1">
-        <div className="row"></div>
-    </div>
-    <div className="colum1">
-        <div className="row"></div>
-    </div>
-    <div className="colum1">
-        <div className="row"></div>
-    </div>
-    <div className="colum1">
-        <div className="row"></div>
-    </div>
-    <div className="colum1">
-        <div className="row"></div>
-    </div> */}
-      </div>
+    <>
+
+      {
+        <StyledAudio
+          style={{
+            background: `${isVisible ? "#FFFFFF33" : "transparent"}`,
+            backdropFilter: `${isVisible ? "blur(10px)" : "blur(0px)"}`,
+          }}
+          className={`${styles.audioPlayer}`}>
+          <button onClick={togglePlayPause} className={styles.playPauseButton}>
+            {isPlaying ? <BsPauseCircleFill className='playIcons' /> :  <IoPlayCircle className='playIcons' /> }
+          </button>
+          <audio ref={prop.value} src="/audio/videoplayback.mp3" />
+
+          {isVisible && <div className="container-audio">
+            {isPlaying &&
+              <div className="container-audio">
+                <div className="colum1">
+                  <div className="row"></div>
+                </div>
+
+                <div className="colum1">
+                  <div className="row"></div>
+                </div>
+                <div className="colum1">
+                  <div className="row"></div>
+                </div>
+                <div className="colum1">
+                  <div className="row"></div>
+                </div>
+                <div className="colum1">
+                  <div className="row"></div>
+                </div>
+                <div className="colum1">
+                  <div className="row"></div>
+                </div>
+                <div className="colum1">
+                  <div className="row"></div>
+                </div>
+                <div className="colum1">
+                  <div className="row"></div>
+                </div>
+                <div className="colum1">
+                  <div className="row"></div>
+                </div>
+                <div className="colum1">
+                  <div className="row"></div>
+                </div>
+                <div className="colum1">
+                  <div className="row"></div>
+                </div>
+                <div className="colum1">
+                  <div className="row"></div>
+                </div>
+                <div className="colum1">
+                  <div className="row"></div>
+                </div>
+                <div className="colum1">
+                  <div className="row"></div>
+                </div>
+                <div className="colum1">
+                  <div className="row"></div>
+                </div>
+                <div className="colum1">
+                  <div className="row"></div>
+                </div>
+                <div className="colum1">
+                  <div className="row"></div>
+                </div>
+                <div className="colum1">
+                  <div className="row"></div>
+                </div>
+                <div className="colum1">
+                  <div className="row"></div>
+                </div>
+                <div className="colum1">
+                  <div className="row"></div>
+                </div>
+
+              </div>
+
+            }
+          </div>
+
+          }
+
+
+        </StyledAudio>
+      }
 
 
 
-    </StyledAudio>
+    </>
+
   );
 }
 
@@ -120,10 +166,12 @@ display:flex;
 flex-direction:row;
 justify-content: flex-start;
 align-items: flex-end;
-background: rgba(255, 255, 255, 0.2);
+
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+ 
+
+
+ 
 
 
 button{
@@ -150,17 +198,11 @@ background: linear-gradient(45deg, #ffb700, yellow, #738000);
     height: 100%;
     padding: 0px;
     border-radius: 5px;
-    /* background-color: green; */
     color: #444;
-    margin-bottom:14px;
+    margin-bottom:7px;
     overflow: hidden;
 }
-/* audio {
-  width:100%;
-}
-audio:nth-child(2), audio:nth-child(4), audio:nth-child(6) {
-    margin: 0;
-} */
+
 .container-audio .colum1 {
     width: 10px;
     height: 2em;
