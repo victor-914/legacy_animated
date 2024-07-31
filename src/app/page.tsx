@@ -30,7 +30,6 @@ export default function Home() {
   const newsRef = useRef<HTMLDivElement>(null);
   const teamRef = useRef<HTMLDivElement>(null);
   const subscribeRef = useRef<HTMLDivElement>(null);
-  const audioRef = useRef<HTMLAudioElement>(null);
 
   const menu = [
     {
@@ -138,21 +137,10 @@ export default function Home() {
   }, { scope: containerRef })
 
 
-  const playAudio = () => {
-    if (audioRef?.current) {
-      audioRef?.current?.play();
-    }
-  };
+ 
 
   return (
     <StyledHome
-    onMouseOver={playAudio}
-    onMouseEnter={playAudio}
-    onClick={playAudio}
-    onMouseLeave={playAudio}
-    onDoubleClick={playAudio}
-    onFocus={playAudio}
-    onBlur={playAudio}
     >
       <NavBar
         data={menu}
@@ -169,7 +157,7 @@ export default function Home() {
       <Community />
       <Socials /> 
       <Footer />
-      <AudioPlayer value={audioRef}/>
+      <AudioPlayer/>
     </StyledHome>
   );
 }

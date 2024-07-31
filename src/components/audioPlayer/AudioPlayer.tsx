@@ -6,17 +6,18 @@ import styled from 'styled-components';
 import { BsPauseCircleFill } from "react-icons/bs";
 import { IoPlayCircle } from "react-icons/io5";
 
-export default function AudioPlayer(prop: { value: React.RefObject<HTMLAudioElement> }) {
+export default function AudioPlayer() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const lastScrollY = useRef(0);
+  const audioRef = useRef<HTMLAudioElement | null>(null)
   
 
   useEffect(() => {
-    if (prop?.value?.current) {
-      prop.value.current.loop = true;
+    if (audioRef?.current) {
+      audioRef.current.loop = true;
       setIsPlaying(true)
-      prop?.value?.current.play();
+      audioRef?.current.play();
 
     }
     const handleScroll = () => {
@@ -37,8 +38,8 @@ export default function AudioPlayer(prop: { value: React.RefObject<HTMLAudioElem
 
 
   useEffect(() => {
-    prop?.value?.current?.play()
-  }, [prop?.value?.current]);
+    audioRef?.current?.play()
+  }, [audioRef?.current]);
 
 
 
@@ -46,11 +47,11 @@ export default function AudioPlayer(prop: { value: React.RefObject<HTMLAudioElem
 
     setIsPlaying(!isPlaying);
 
-    if (prop.value.current) {
+    if (audioRef.current) {
       if (isPlaying) {
-        prop.value.current.pause();
+        audioRef.current.pause();
       } else {
-        prop.value.current.play();
+        audioRef.current.play();
       }
     }
   };
@@ -69,7 +70,7 @@ export default function AudioPlayer(prop: { value: React.RefObject<HTMLAudioElem
           <button onClick={togglePlayPause} className={styles.playPauseButton}>
             {isPlaying ? <BsPauseCircleFill className='playIcons' /> :  <IoPlayCircle className='playIcons' /> }
           </button>
-          <audio ref={prop.value} src="/audio/videoplayback.mp3" />
+          <audio ref={audioRef} src="/audio/videoplayback.mp3" />
 
           {isVisible && <div className="container-audio">
             {isPlaying &&
