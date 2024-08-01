@@ -11,7 +11,7 @@ export default function AudioPlayer() {
   const [isVisible, setIsVisible] = useState(true);
   const lastScrollY = useRef(0);
   const audioRef = useRef<HTMLAudioElement | null>(null)
-  
+
 
   useEffect(() => {
     if (audioRef?.current) {
@@ -68,7 +68,7 @@ export default function AudioPlayer() {
           }}
           className={`${styles.audioPlayer}`}>
           <button onClick={togglePlayPause} className={styles.playPauseButton}>
-            {isPlaying ? <BsPauseCircleFill className='playIcons' /> :  <IoPlayCircle className='playIcons' /> }
+            {isPlaying ? <BsPauseCircleFill className='playIcons' /> : <IoPlayCircle className='playIcons' />}
           </button>
           <audio ref={audioRef} src="/audio/videoplayback.mp3" />
 
@@ -115,7 +115,7 @@ export default function AudioPlayer() {
                 <div className="colum1">
                   <div className="row"></div>
                 </div>
-                
+
 
               </div>
 
@@ -124,7 +124,9 @@ export default function AudioPlayer() {
 
           }
 
-
+          {/* <marquee behavior="scroll" direction="left" scrollamount="10">
+            O gini Bu Esport? 
+          </marquee> */}
         </StyledAudio>
       }
 

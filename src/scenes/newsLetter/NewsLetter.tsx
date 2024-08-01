@@ -1,8 +1,17 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled from 'styled-components'
 import ParticlesComponent from '../particle/Particles'
 
 function NewsLetter(prop: { value: React.LegacyRef<HTMLDivElement> }) {
+
+     const [email, setEmail] = useState("");
+     const [show, setShow] = useState(false);
+
+     const handleSubmit = () => {
+        console.log(email)
+        setShow(true)
+     }
+
     return (
         <StyledNewsLetter className="panel" ref={prop.value}>
             <div className='overAllCont'>
@@ -19,12 +28,41 @@ function NewsLetter(prop: { value: React.LegacyRef<HTMLDivElement> }) {
                         Subscribe to our newsletter and get a PDF detailing the amazing opportunities in the esport industry.
                     </p>
 
+                  {
+                    !show &&
                     <main className='newsLetterCard'>
 
-                        <input type='text' placeholder='Type your email' />
-                        <button>next</button>
+                    <input 
+                     onChange={(e) => setEmail(e.target.value)}
+                    type='text' placeholder='Type your email' />
+                    <button
+                     onClick={handleSubmit}
+                    >next</button>
+
+
+
+                </main>
+                  }
+
+                    {
+                        show && 
+
+                        <main className='newsLetterCard'>
+
+
+                        <button
+                        //  onClick={handleSubmit}
+                        >Drownload PDF</button>
+
+
 
                     </main>
+                    }
+
+
+
+
+                
 
                 </main>
 
@@ -129,6 +167,7 @@ clip-path: polygon(32% 0, 100% 0, 98% 96%, 0 100%);
     font-weight: 600;
     background-color: #CE9934;
     color:#fff;
+    cursor:pointer;
 }
 
 .glitch-wrapper {
@@ -358,11 +397,6 @@ font-family: "Poppins";
 }
 
 
-/* @media (min-width: 1200px) {
-background-color: #CE9934;
-
-
-} */
 
 
 `

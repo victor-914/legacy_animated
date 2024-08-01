@@ -1,15 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { TextField, Button, Box, Typography } from "@mui/material";
+import { TextField } from "@mui/material";
 function Form() {
-	// name 
-	// email
-	// age 
-	// gender 
-	// phone number 
-	// location
-	// favourite media platform 
-	// and fav platform handle
+
 	const [formValues, setFormValues] = useState({
 		firstName: "",
 		lastName: "",
@@ -20,17 +13,19 @@ function Form() {
 		location: "",
 		favouriteMediaPlatform: "",
 		favouriteMPhandle: "",
-		oftenPlayGames: ""
+		oftenPlayGames: "",
+		favouriteGame: ""
 	});
 
 
-	const handleLand = () => {
-		// e.preventDefault();
-		// const { name, value } = e.target;
-		// setFormValues({
-		//   ...formValues,
-		//   [name]: value,
-		// });
+	const handleLand = (e: { preventDefault: () => void; target: { name: any; value: any; }; }) => {
+		e.preventDefault();
+		const { name, value } = e.target;
+		setFormValues({
+			...formValues,
+			[name]: value,
+		});
+
 	};
 
 	const formArr = [
@@ -39,8 +34,8 @@ function Form() {
 			type: "text",
 			placeholder: "first name",
 			onChange: handleLand,
-			name: "FirstName",
-			labelText: "First Name",
+			name: "firstName",
+			labelText: "first name",
 			value: formValues.firstName,
 			helper: "Add your firstname"
 		},
@@ -50,19 +45,45 @@ function Form() {
 			placeholder: "last name",
 			onChange: handleLand,
 			name: "lastName",
-			labelText: "Last Name",
+			labelText: "last name",
 			value: formValues.lastName,
 			helper: "Add your lastname"
 		},
+	
+
+
 		{
-			_id: "wdids",
-			type: "number",
-			placeholder: "age",
+			_id: "32wedjids",
+			type: "select",
+			placeholder: "Age group",
 			onChange: handleLand,
 			name: "age",
-			labelText: "Age",
+			labelText: "Age group",
 			value: formValues.age,
-			helper: "what is your age group?"
+			helper: "What is your age group",
+			options: [
+				{
+					text: "10-15",
+					value: "10-15",
+				},
+				{
+					text: "16-20",
+					value: "16-20",
+				},
+				{
+					text: "20-25",
+					value: "20-25",
+				},
+				{
+					text: "26-30",
+					value: "26-30",
+				},
+				{
+					text: "31-above",
+					value: "31-above",
+				},
+
+			],
 		},
 
 		{
@@ -81,7 +102,7 @@ function Form() {
 			placeholder: "Location",
 			onChange: handleLand,
 			name: "location",
-			labelText: "Location",
+			labelText: "location",
 			value: formValues.location,
 			helper: "Add your location"
 		},
@@ -91,9 +112,9 @@ function Form() {
 			placeholder: "e.g city...",
 			onChange: handleLand,
 			name: "favouriteMediaPlatform",
-			labelText: "Favourite social media platform",
+			labelText: "Favourite social platform",
 			value: formValues.favouriteMediaPlatform,
-			helper: "what your best social media platform?"
+			helper: "what your active social platform?"
 		},
 
 		{
@@ -102,32 +123,28 @@ function Form() {
 			placeholder: "e.g x.com",
 			onChange: handleLand,
 			name: "favouriteMediaPlatform",
-			labelText: "Favourite  platform handle",
+			labelText: "what your social handle",
 			value: formValues.favouriteMediaPlatform,
-			helper: "Add your handle"
+			helper: "Add your social handle"
 		},
-
-
-
 
 		{
 			_id: "33jdjd423",
-			type: "text",
+			type: "number",
 			placeholder: "+234...",
 			onChange: handleLand,
-			name: "price",
+			name: "phoneNumber",
 			labelText: "Tel No",
 			value: formValues.phoneNumber,
 			helper: "Add your phone number"
 		},
-
 
 		{
 			_id: "323kwdkdjjdjsids",
 			type: "select",
 			placeholder: "status",
 			onChange: handleLand,
-			name: "status",
+			name: "oftenPlayGames",
 			labelText: "How often do you play games",
 			value: formValues.oftenPlayGames,
 			helper: "select how often",
@@ -151,15 +168,56 @@ function Form() {
 			],
 		},
 
+		{
+			_id: "323KKDhjjdjwd",
+			type: "text",
+			placeholder: "e.g city...",
+			onChange: handleLand,
+			name: "favouriteGame",
+			labelText: "Favourite game",
+			value: formValues.favouriteGame,
+			helper: "what is your favourite game?",
+		}
+
 
 	];
 
+	const handleSubmit = () => {
+		console.log(formValues)
+	}
+
 	return (
 		<StyledForm>
-			
+
 			<form className="registration-form">
 
 				{formArr.map((item) => {
+
+					if (item.type === "select" && item.options) {
+						return (
+							<TextField
+								id={item._id}
+								select
+								type={item.type}
+								key={item._id}
+								sx={{
+									marginTop: "20px",
+								}}
+								label={item.labelText}
+								SelectProps={{
+									native: true,
+								}}
+								name={item.name}
+								onChange={handleLand}
+							>
+								{item?.options?.map((option) => (
+									<option key={option.value} value={option.value}>
+										{option.text}
+									</option>
+								))}
+							</TextField>
+						)
+					}
 
 					return (
 						<TextField
@@ -177,7 +235,15 @@ function Form() {
 					);
 				})}
 
+
 			</form>
+
+			<aside className="submitContainer">
+
+				<button onClick={handleSubmit} type='submit'>
+					submit
+				</button>
+			</aside>
 		</StyledForm>
 	)
 }
@@ -200,6 +266,26 @@ const StyledForm = styled.section`
   .formHeader{
 	width:70%;
 	margin:auto;
+  }
+
+  .submitContainer{
+	width:50%;
+	margin: auto;
+	height: 10vh;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+  }
+
+  .submitContainer button{
+	padding:8px;
+	background-color: #000000;
+	font-size:20px;
+	border-radius:8px;
+	outline: none;
+	border:none;
+	color:#fff;
+	text-transform: uppercase;
   }
 
   .glitch-wrapper_form {
