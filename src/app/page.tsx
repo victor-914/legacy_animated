@@ -1,5 +1,5 @@
 "use client"
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import styled from "styled-components";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -14,6 +14,7 @@ import Community from "@/scenes/community/Community";
 import Footer from "@/scenes/footer/Footer";
 import Socials from "@/scenes/socials/Social";
 import AudioPlayer from "@/components/audioPlayer/AudioPlayer";
+import TapToPlay from "@/components/tapToPlayer/TapToPlay";
 gsap.registerPlugin(ScrollTrigger);
 
 export interface MenuI {
@@ -30,6 +31,7 @@ export default function Home() {
   const newsRef = useRef<HTMLDivElement>(null);
   const teamRef = useRef<HTMLDivElement>(null);
   const subscribeRef = useRef<HTMLDivElement>(null);
+ 
 
   const menu = [
     {
@@ -62,8 +64,8 @@ export default function Home() {
       title: "news",
       ref: null,
     },
-  
-  
+
+
   ]
 
   useGSAP(() => {
@@ -137,7 +139,7 @@ export default function Home() {
   }, { scope: containerRef })
 
 
- 
+
 
   return (
     <StyledHome
@@ -146,18 +148,21 @@ export default function Home() {
         data={menu}
       />
       <LandPage value={landingPgRef} />
-      <div ref={containerRef} className="container">
+      <section ref={containerRef} className="container">
         <Mission value={visionRef} />
         <Team value={teamRef} />
         <News value={newsRef} />
         <NewsLetter
           value={subscribeRef}
         />
-      </div>
+      </section>
       <Community />
-      <Socials /> 
+      <Socials />
       <Footer />
-      <AudioPlayer/>
+      <AudioPlayer />
+
+     
+
     </StyledHome>
   );
 }

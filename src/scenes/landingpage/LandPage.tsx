@@ -27,7 +27,7 @@ function LandPage(prop: { value: React.LegacyRef<HTMLElement> | undefined; }) {
 
             </div>
 
-            <p className="textFirst_p">O gini Bu esport</p>
+            {/* <p className="textFirst_p">O gini Bu esport</p> */}
 
 
             <div className="cover_first">
@@ -49,7 +49,7 @@ const StyledLanding = styled.section`
   align-items: center;
   height: 100vh;
   width:100;
-  background-image: url("/homeBg.gif");
+  /* background-image: url("/homeBg.gif"); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

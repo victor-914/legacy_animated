@@ -5,21 +5,21 @@ import styles from '../audioPlayer/audioplayer.module.css';
 import styled from 'styled-components';
 import { BsPauseCircleFill } from "react-icons/bs";
 import { IoPlayCircle } from "react-icons/io5";
-
-export default function AudioPlayer() {
+import TapToPlay from '../tapToPlayer/TapToPlay';
+export default function AudioPlayer({ }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const lastScrollY = useRef(0);
   const audioRef = useRef<HTMLAudioElement | null>(null)
-
+  const [tapToPlay_STATE, setTapToPlay_STATE] = useState<Boolean>(true)
 
   useEffect(() => {
-    if (audioRef?.current) {
-      audioRef.current.loop = true;
-      setIsPlaying(true)
-      audioRef?.current.play();
+    // if (audioRef?.current) {
+    //   audioRef.current.loop = true;
+    //   setIsPlaying(true)
+    //   audioRef?.current.play();
 
-    }
+    // }
     const handleScroll = () => {
       if (window.scrollY > lastScrollY.current) {
         setIsVisible(false);
@@ -37,9 +37,19 @@ export default function AudioPlayer() {
   }, []);
 
 
-  useEffect(() => {
-    audioRef?.current?.play()
-  }, [audioRef?.current]);
+  // useEffect(() => {
+  //   audioRef?.current?.play()
+  // }, [audioRef?.current]);
+
+
+  const handleFirstClick = () => {
+    if (audioRef.current) {
+      audioRef.current.play()
+    }
+    setTapToPlay_STATE(false)
+    setIsPlaying(true)
+
+  }
 
 
 
@@ -124,12 +134,17 @@ export default function AudioPlayer() {
 
           }
 
-          {/* <marquee behavior="scroll" direction="left" scrollamount="10">
-            O gini Bu Esport? 
-          </marquee> */}
         </StyledAudio>
       }
 
+
+
+      {
+        tapToPlay_STATE && <section onClick={handleFirstClick}>
+          <TapToPlay />
+
+        </section>
+      }
 
 
     </>
