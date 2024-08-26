@@ -1,5 +1,5 @@
 "use client"
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import styled from "styled-components";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -14,7 +14,6 @@ import Community from "@/scenes/community/Community";
 import Footer from "@/scenes/footer/Footer";
 import Socials from "@/scenes/socials/Social";
 import AudioPlayer from "@/components/audioPlayer/AudioPlayer";
-import TapToPlay from "@/components/tapToPlayer/TapToPlay";
 gsap.registerPlugin(ScrollTrigger);
 
 export interface MenuI {
@@ -60,7 +59,7 @@ export default function Home() {
       ref: subscribeRef,
     },
     {
-      _id: "jeredhf",
+      _id: "jjjdjderedhf",
       title: "news",
       ref: null,
     },
@@ -131,7 +130,7 @@ export default function Home() {
         trigger: containerRef.current,
         pin: true,
         scrub: 1,
-        snap: 1 / (sections.length - 1),
+        // snap: 1 / (sections.length - 1),
         end: () => "+=" + containerRef?.current?.offsetWidth
       }
     })

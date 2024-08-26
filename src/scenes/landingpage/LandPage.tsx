@@ -7,11 +7,11 @@ function LandPage(prop: { value: React.LegacyRef<HTMLElement> | undefined; }) {
     return (
         <StyledLanding ref={prop.value} className="firstContainer">
 
-            <Image id="logo"
+            {/* <Image id="logo"
                 style={{
                     zIndex: "2"
                 }}
-                layout="fixed" width={300} height={300} src="/logo.png" alt="logo" />
+                layout="fixed" width={300} height={300} src="/logo.png" alt="logo" /> */}
 
             <div className="text_first">
                 <TypeAnimation
@@ -27,7 +27,7 @@ function LandPage(prop: { value: React.LegacyRef<HTMLElement> | undefined; }) {
 
             </div>
 
-            {/* <p className="textFirst_p">O gini Bu esport</p> */}
+            <p className="textFirst_p">Esport Organisation</p>
 
 
             <div className="cover_first">
@@ -49,7 +49,7 @@ const StyledLanding = styled.section`
   align-items: center;
   height: 100vh;
   width:100;
-  /* background-image: url("/homeBg.gif"); */
+  background-image: url("/homeBg.gif");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

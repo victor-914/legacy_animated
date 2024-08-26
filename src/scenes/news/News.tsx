@@ -4,14 +4,10 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { data } from "./NewsCard"
 import 'swiper/css';
 import NewsCard from "./NewsCard"
-import { Pagination, Navigation } from 'swiper/modules';
-import { FaAnglesLeft, FaAnglesRight } from "react-icons/fa6";
+import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 import { ParticlesNewComponent } from "../particle/NewsParticle";
-import { useMediaQuery } from '@mui/material';
 function News(prop: { value: React.LegacyRef<HTMLDivElement> }) {
-  const small = useMediaQuery('(max-width: 575.98px)');
-  const medium = useMediaQuery('(min-width:576px)');
-  const large = useMediaQuery('(min-width:1025px)');
+  
   return (
 
     <StyledNews ref={prop.value} className='panel newsLetterContainer'>
@@ -28,7 +24,7 @@ function News(prop: { value: React.LegacyRef<HTMLDivElement> }) {
           Don't miss any action with our comprehensive previews and recaps of major events, including analysis and expert opinions. Stay ahead with insights into market trends and business developments within the esports industry. Mark your calendars for upcoming major championships across various games and get information about upcoming conventions,  and gatherings where fans and professionals come together.
         </p>
 
-        <button className="newsButton">View More</button>
+        <button className="newsButton">Go to news</button>
 
 
 
@@ -38,30 +34,22 @@ function News(prop: { value: React.LegacyRef<HTMLDivElement> }) {
 
         <main className='mainContainer'>
 
-          <nav className='navCont swiper-button-next'>
-            <FaAnglesLeft
-              className='nav'
-            />
-          </nav>
-
-          <nav className='navCont swiper-button-prev'>
-            <FaAnglesRight
-              className='nav'
-            />
-          </nav>
-
-
-
+       
           <Swiper
             slidesPerView={1}
             spaceBetween={10}
-            autoplay={true}
+            autoplay={{
+              delay:1000,
+              disableOnInteraction: true,
+
+            }}
+            loop={true}
             navigation={{
               nextEl: '.swiper-button-next',
               prevEl: '.swiper-button-prev',
               disabledClass: 'disabled-nav'
             }}
-            modules={[Pagination, Navigation]}
+            modules={[Pagination, Navigation, Autoplay]}
             className="mySwiper"
           >
             {data?.map((item) => (
@@ -158,6 +146,7 @@ justify-content: center;
     padding: 8px;
     border-radius: 2px;
     font-weight: 700;
+    cursor: pointer;
     line-height: 2;
     text-transform: uppercase;
     outline: none;
@@ -202,7 +191,7 @@ justify-content: center;
 
 
   @media (max-width: 575.98px) {
-flex-direction: column;
+flex-direction: column-reverse;
 justify-content: space-around;
 padding-top: 50px;
 
@@ -283,7 +272,6 @@ justify-content: center;
 
 .newsText{
   font-size: 16px;
-  /* display: none; */
 }
 
 

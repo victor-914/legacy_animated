@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Image from "next/image";
 import { useRouter } from "next/navigation"
 export interface NewsI {
-    title: string;
-    image_src: string;
+    id:string,
+    title: string,
+    image_src: string,
     time: string,
     date: string,
     location: string,
@@ -21,6 +21,7 @@ interface NewsCardProps {
 
 export const data: NewsI[] = [
     {
+        "id":"ndhfjjhshpioasjkdjh",
         "time": "0:00",
         "date": "coming soon",
         "title": "UNEC ESPORT TOUR",
@@ -29,6 +30,7 @@ export const data: NewsI[] = [
         "image_src": "/img/1.jpg"
     },
     {
+        "id":"ndhfjjkdjhghsgqwer",
         "time": "0:00",
         "date": "coming soon",
         "title": "UNN ESPORT TOUR",
@@ -37,6 +39,7 @@ export const data: NewsI[] = [
         "image_src": "/img/2.jpg"
     },
     {
+        "id":"ndhfsjdjhkslppjjkdjh",
         "time": "0:00",
         "date": "coming soon",
         "title": "ESUT ESPORT TOUR",
@@ -45,6 +48,7 @@ export const data: NewsI[] = [
         "image_src": "/img/3.jpg"
     },
     {
+        "id":"ndhfhhskqdsjjkdjh",
         "time": "0:00",
         "date": "coming soon",
         "title": "UNEC ESPORT TOUR",
@@ -53,6 +57,7 @@ export const data: NewsI[] = [
         "image_src": "/img/4.jpg"
     },
     {
+        "id":"ndhgggfjjkdjh",
         "time": "0:00",
         "date": "coming soon",
         "title": "UNEC ESPORT TOUR",
@@ -61,6 +66,7 @@ export const data: NewsI[] = [
         "image_src": "/img/5.jpg"
     },
     {
+        "id":"ndhfjjldjfjaskdjh",
         "time": "0:00",
         "date": "coming soon",
         "title": "UNEC ESPORT TOUR",
@@ -69,6 +75,7 @@ export const data: NewsI[] = [
         "image_src": "/img/6.jpg"
     },
     {
+        "id":"ndhfjjkdjh",
         "time": "0:00",
         "date": "coming soon",
         "title": "UNEC ESPORT TOUR",
@@ -126,7 +133,6 @@ function NewsCard({ value }: NewsCardProps) {
             <aside className='readMoreCont'>
                 <div onClick={() => router.push("/news")} className='readMore hover'>read more</div>
             </aside>
-            {/* </main> */}
         </StyledNewsCard>
     )
 }
@@ -138,7 +144,7 @@ export default NewsCard
 const StyledNewsCard = styled.div`
 width: 100%;
 height:481px;
-border: 1px solid #08070799;
+border: 1px solid #08070759;
 border-radius:8px;
 display: flex;
 position: relative;
@@ -284,7 +290,6 @@ justify-content: flex-end;
 
 
 @media (max-width: 575.98px) {
-/* background-color: orange; */
 
 
 
@@ -304,7 +309,6 @@ height:281px;
 
 
 @media (min-width: 766px) and (max-width: 991.98px) {
-background-color: green;
 
 
  .newsLetterHeader .newsSubtitle{
@@ -318,7 +322,6 @@ background-color: green;
 
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
-background-color: purple;
 
 
 
@@ -327,7 +330,6 @@ background-color: purple;
 
 
 @media (min-width: 1200px) {
-background-color: #CE9934;
 
 
 }

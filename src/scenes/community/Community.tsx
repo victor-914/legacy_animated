@@ -8,7 +8,7 @@ function Community() {
       <header>
         <div className="wrapper">
           <svg>
-            <text className='joinText' x="50%" y="50%" dy=".35em" text-anchor="middle">
+            <text className='joinText' x="50%" y="50%" dy=".35em" textAnchor="middle">
               Join our Community
             </text>
           </svg>

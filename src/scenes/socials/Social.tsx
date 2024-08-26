@@ -110,7 +110,6 @@ clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 76%);
     text-align: center;
     font-size: 23px;
     font-weight: 600;
-    /* margin:auto; */
  }
 
 .newsLetterCard{
@@ -152,7 +151,6 @@ clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 76%);
 }
 
 .social-container {
-  /* background: #eee; */
   padding: 25px 50px;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 10px;
@@ -263,7 +261,6 @@ a.tiktok {
 
 
 @media (max-width: 575.98px) {
-background-color: #000;
 
 .overAllCont{
     clip-path: polygon(11% 9%, 100% 0, 100% 100%, 0% 100%);
