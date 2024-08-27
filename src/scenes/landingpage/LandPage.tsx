@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { TypeAnimation } from 'react-type-animation';
 import Image from "next/image"
 
-function LandPage(prop: { value: React.LegacyRef<HTMLElement> | undefined; }) {
+function LandPage(prop: { value: React.LegacyRef<HTMLDivElement> | undefined; }) {
     return (
         <StyledLanding ref={prop.value} className="firstContainer">
 
