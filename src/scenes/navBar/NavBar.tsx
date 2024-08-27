@@ -8,6 +8,7 @@ import { MenuI } from '@/app/page';
 import { AiOutlineMenu } from "react-icons/ai";
 import { IoMdClose } from "react-icons/io";
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 gsap.registerPlugin(ScrollTrigger);
 
 interface NavBarProps {
@@ -18,6 +19,8 @@ function NavBar(props: NavBarProps) {
 
   const navRef = useRef<HTMLDivElement>(null)
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const router = useRouter()
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -41,17 +44,20 @@ function NavBar(props: NavBarProps) {
         <main className='nav'>
           {
             props.data.map((item) => {
-              if (item.title === "News") {
+              if (item.title === "news") {
                 return (
 
+
                   <Link
-                  className="navList"
+                    className="navList"
                     style={{
                       color: "#ce9934",
                       textDecoration: "none",
                     }}
                     href={`/${item.title}`}>
-                    {item.title}
+                    <li onClick={() => router.push(item.title)}>
+                      {item.title}
+                    </li>
                   </Link>
                 )
               } else {

@@ -18,7 +18,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export interface MenuI {
   _id: string,
-  title: String,
+  title: string,
   ref: React.RefObject<HTMLDivElement> | null,
 }
 

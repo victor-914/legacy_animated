@@ -20,7 +20,7 @@ export const data: PersonI[] = [
     {
         _id: "7475",
         name: "Nnamani George",
-        title: "CVO",
+        title: "CEO",
         img: "/george.jpg"
     },
     {
@@ -38,7 +38,7 @@ export const data: PersonI[] = [
     {
         _id: "745",
         name: "Egwu Peter",
-        title: "CEO",
+        title: "Chairman",
         img: "/peter.png"
     },
 ]
