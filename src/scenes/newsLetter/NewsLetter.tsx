@@ -76,7 +76,7 @@ function NewsLetter(prop: { value: React.LegacyRef<HTMLDivElement> }) {
 export default NewsLetter
 
 
-const StyledNewsLetter = styled.section`
+const StyledNewsLetter = styled.div`
 
  #particle  .canva  {
   z-index:-1;

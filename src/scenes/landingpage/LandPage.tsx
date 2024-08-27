@@ -42,7 +42,7 @@ function LandPage(prop: { value: React.LegacyRef<HTMLElement> | undefined; }) {
 export default LandPage
 
 
-const StyledLanding = styled.section`
+const StyledLanding = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;

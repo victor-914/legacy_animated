@@ -1,13 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { data } from "./NewsCard"
+import { data } from "./NewsCard";
 import 'swiper/css';
-import NewsCard from "./NewsCard"
+import NewsCard from "./NewsCard";
+import { useRouter } from "next/navigation";
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 import { ParticlesNewComponent } from "../particle/NewsParticle";
 function News(prop: { value: React.LegacyRef<HTMLDivElement> }) {
-  
+  const router = useRouter()
   return (
 
     <StyledNews ref={prop.value} className='panel newsLetterContainer'>
@@ -24,7 +25,9 @@ function News(prop: { value: React.LegacyRef<HTMLDivElement> }) {
           Don't miss any action with our comprehensive previews and recaps of major events, including analysis and expert opinions. Stay ahead with insights into market trends and business developments within the esports industry. Mark your calendars for upcoming major championships across various games and get information about upcoming conventions,  and gatherings where fans and professionals come together.
         </p>
 
-        <button className="newsButton">Go to news</button>
+        <button
+          onClick={() => router.push("/news")}
+          className="newsButton">Go to news</button>
 
 
 
@@ -34,12 +37,12 @@ function News(prop: { value: React.LegacyRef<HTMLDivElement> }) {
 
         <main className='mainContainer'>
 
-       
+
           <Swiper
             slidesPerView={1}
             spaceBetween={10}
             autoplay={{
-              delay:1000,
+              delay: 1000,
               disableOnInteraction: true,
 
             }}

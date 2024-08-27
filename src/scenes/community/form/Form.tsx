@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { TextField } from "@mui/material";
+import axios from "axios";
 function Form() {
 
 	const [formValues, setFormValues] = useState({
@@ -18,7 +19,7 @@ function Form() {
 	});
 
 
-	const handleLand = (e: { preventDefault: () => void; target: { name: any; value: any; }; }) => {
+	const handleComForm = (e: { preventDefault: () => void; target: { name: any; value: any; }; }) => {
 		e.preventDefault();
 		const { name, value } = e.target;
 		setFormValues({
@@ -26,14 +27,28 @@ function Form() {
 			[name]: value,
 		});
 
+
+
+
 	};
+
+	// const handleSubmit = async (payload) => {
+		
+	// 	try {
+	// 	  const res = await axios.post('/api/submit', { name });
+	// 	  setResponse(res.data.message);
+	// 	} catch (error) {
+	// 	  console.error('Error submitting form:', error);
+	// 	  setResponse('An error occurred.');
+	// 	}
+	//   };
 
 	const formArr = [
 		{
 			_id: "323",
 			type: "text",
 			placeholder: "first name",
-			onChange: handleLand,
+			onChange: handleComForm,
 			name: "firstName",
 			labelText: "first name",
 			value: formValues.firstName,
@@ -43,7 +58,7 @@ function Form() {
 			_id: "32kjfjd3",
 			type: "text",
 			placeholder: "last name",
-			onChange: handleLand,
+			onChange: handleComForm,
 			name: "lastName",
 			labelText: "last name",
 			value: formValues.lastName,
@@ -56,7 +71,7 @@ function Form() {
 			_id: "32wedjids",
 			type: "select",
 			placeholder: "Age group",
-			onChange: handleLand,
+			onChange: handleComForm,
 			name: "age",
 			labelText: "Age group",
 			value: formValues.age,
@@ -90,7 +105,7 @@ function Form() {
 			_id: "323hd",
 			type: "email",
 			placeholder: "@gmail.com",
-			onChange: handleLand,
+			onChange: handleComForm,
 			name: "email",
 			labelText: "Email",
 			value: formValues.email,
@@ -100,7 +115,7 @@ function Form() {
 			_id: "33423",
 			type: "text",
 			placeholder: "Location",
-			onChange: handleLand,
+			onChange: handleComForm,
 			name: "location",
 			labelText: "location",
 			value: formValues.location,
@@ -110,7 +125,7 @@ function Form() {
 			_id: "323KKDhd",
 			type: "text",
 			placeholder: "e.g city...",
-			onChange: handleLand,
+			onChange: handleComForm,
 			name: "favouriteMediaPlatform",
 			labelText: "Favourite social platform",
 			value: formValues.favouriteMediaPlatform,
@@ -121,7 +136,7 @@ function Form() {
 			_id: "323KjsjdDhd",
 			type: "text",
 			placeholder: "e.g x.com",
-			onChange: handleLand,
+			onChange: handleComForm,
 			name: "favouriteMediaPlatform",
 			labelText: "what your social handle",
 			value: formValues.favouriteMediaPlatform,
@@ -132,7 +147,7 @@ function Form() {
 			_id: "33jdjd423",
 			type: "number",
 			placeholder: "+234...",
-			onChange: handleLand,
+			onChange: handleComForm,
 			name: "phoneNumber",
 			labelText: "Tel No",
 			value: formValues.phoneNumber,
@@ -143,7 +158,7 @@ function Form() {
 			_id: "323kwdkdjjdjsids",
 			type: "select",
 			placeholder: "status",
-			onChange: handleLand,
+			onChange: handleComForm,
 			name: "oftenPlayGames",
 			labelText: "How often do you play games",
 			value: formValues.oftenPlayGames,
@@ -172,7 +187,7 @@ function Form() {
 			_id: "323KKDhjjdjwd",
 			type: "text",
 			placeholder: "e.g city...",
-			onChange: handleLand,
+			onChange: handleComForm,
 			name: "favouriteGame",
 			labelText: "Favourite game",
 			value: formValues.favouriteGame,
@@ -182,9 +197,27 @@ function Form() {
 
 	];
 
-	const handleSubmit = () => {
-		console.log(formValues)
-	}
+	const handleSubmit = async () => {
+
+		if(formValues == null || undefined || ""){
+		   return
+		}
+
+		console.log(
+			process.env.NEXT_PUBLIC_API_URL
+		 )
+	   
+	   try {
+		 const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/communities`,  {data:formValues});
+		 console.log(res.data.message);
+		 console.log(
+			process.env.NEXT_API_URL
+		 )
+	   } catch (error) {
+		 console.log('Error submitting form:', error);
+	   //   setResponse('An error occurred.');
+	   }
+	 };
 
 	return (
 		<StyledForm>
@@ -208,7 +241,7 @@ function Form() {
 									native: true,
 								}}
 								name={item.name}
-								onChange={handleLand}
+								onChange={handleComForm}
 							>
 								{item?.options?.map((option) => (
 									<option key={option.value} value={option.value}>
@@ -229,7 +262,7 @@ function Form() {
 							}}
 							label={item.labelText}
 							name={item.name}
-							onChange={handleLand}
+							onChange={handleComForm}
 							helperText={item.helper}
 						/>
 					);
@@ -286,6 +319,7 @@ const StyledForm = styled.section`
 	border:none;
 	color:#fff;
 	text-transform: uppercase;
+	cursor: pointer;
   }
 
   .glitch-wrapper_form {

@@ -19,7 +19,7 @@ gsap.registerPlugin(ScrollTrigger);
 export interface MenuI {
   _id: string,
   title: string,
-  ref: React.RefObject<HTMLDivElement> | null,
+  ref: React.RefObject<HTMLElement> | null,
 }
 
 
@@ -143,9 +143,9 @@ export default function Home() {
   return (
     <StyledHome
     >
-      <NavBar
+      {/* <NavBar
         data={menu}
-      />
+      /> */}
       <LandPage value={landingPgRef} />
       <section ref={containerRef} className="container">
         <Mission value={visionRef} />
@@ -155,10 +155,11 @@ export default function Home() {
           value={subscribeRef}
         />
       </section>
+      
       <Community />
       <Socials />
       <Footer />
-      <AudioPlayer />
+      {/* <AudioPlayer /> */}
 
      
 

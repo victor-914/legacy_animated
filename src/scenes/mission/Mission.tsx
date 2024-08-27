@@ -5,12 +5,12 @@ import ParticlesComponent from "../particle/Particles"
 
 
 
-function Mission(prop: { value: React.LegacyRef<HTMLElement> | undefined; }) {
+function Mission(prop: { value: React.Ref<HTMLElement> | undefined; }) {
 
     // disable particle hover effect in mobile
 
     return (
-        <StyledMission className="vision panel" ref={prop.value}>
+        <StyledMission className="vision panel" ref={prop.value  as React.RefObject<HTMLDivElement>}>
 
             <ParticlesComponent id="particles" />
 
@@ -19,6 +19,7 @@ function Mission(prop: { value: React.LegacyRef<HTMLElement> | undefined; }) {
                 <q>
                     At Legacy Gaming, our mission is to create a vibrant gaming community that celebrates African talent. Through our commitment to quality, and collaboration, we aim to transform the gaming landscape in Africa</q>
             </div>
+
 
             <header className="missionTitle">
                 OUR MISSON
@@ -39,11 +40,15 @@ export default Mission
 
 
 
-const StyledMission = styled.section`
+const StyledMission = styled.div`
  background-color: #000;
   padding-top:70px;
   position: relative;
   text-transform: uppercase;
+
+   #imgGamePad{
+    aspect-ratio: 16 / 9;
+   }
 
   #particles   {
   z-index:-1;

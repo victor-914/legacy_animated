@@ -23,7 +23,7 @@ function Community() {
 export default Community
 
 
-const StyledCommunity = styled.section`
+const StyledCommunity = styled.div`
 display: flex;
 /* align-items:center; */
 justify-content: center;

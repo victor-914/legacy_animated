@@ -106,14 +106,14 @@ function NewsCard({ value }: NewsCardProps) {
            
             }}>
 
-            <div className='cover'>
+            {/* <div className='cover'>
 
-            </div>
-
-
+            </div> */}
 
 
-            <div className='catergory hover'>
+
+
+            {/* <div className='catergory hover'>
                 {value.category}
             </div>
 
@@ -127,7 +127,7 @@ function NewsCard({ value }: NewsCardProps) {
 
             <div className='location hover'>
                 {value.location}
-            </div>
+            </div> */}
 
             <span className='dot'></span>
             <aside className='readMoreCont'>

@@ -63,7 +63,7 @@ function Socials() {
 export default Socials
 
 
-const StyledNewsLetter = styled.section`
+const StyledNewsLetter = styled.div`
 
  #particle  .canva  {
   z-index:-1;
