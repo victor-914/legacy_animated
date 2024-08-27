@@ -143,9 +143,9 @@ export default function Home() {
   return (
     <StyledHome
     >
-      {/* <NavBar
+      <NavBar
         data={menu}
-      /> */}
+      />
       <LandPage value={landingPgRef} />
       <section ref={containerRef} className="container">
         <Mission value={visionRef} />
@@ -159,7 +159,7 @@ export default function Home() {
       <Community />
       <Socials />
       <Footer />
-      {/* <AudioPlayer /> */}
+      <AudioPlayer />
 
      
 

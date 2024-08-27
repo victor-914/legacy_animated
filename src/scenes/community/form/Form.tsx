@@ -33,7 +33,7 @@ function Form() {
 	};
 
 	// const handleSubmit = async (payload) => {
-		
+
 	// 	try {
 	// 	  const res = await axios.post('/api/submit', { name });
 	// 	  setResponse(res.data.message);
@@ -64,7 +64,7 @@ function Form() {
 			value: formValues.lastName,
 			helper: "Add your lastname"
 		},
-	
+
 
 
 		{
@@ -79,23 +79,23 @@ function Form() {
 			options: [
 				{
 					text: "10-15",
-					value: "10-15",
+					value: "a10-15",
 				},
 				{
 					text: "16-20",
-					value: "16-20",
+					value: "a16-20",
 				},
 				{
 					text: "20-25",
-					value: "20-25",
+					value: "a20-25",
 				},
 				{
 					text: "26-30",
-					value: "26-30",
+					value: "a26-30",
 				},
 				{
 					text: "31-above",
-					value: "31-above",
+					value: "a31-above",
 				},
 
 			],
@@ -199,25 +199,27 @@ function Form() {
 
 	const handleSubmit = async () => {
 
-		if(formValues == null || undefined || ""){
-		   return
+		if (formValues == null || undefined || "") {
+			return
 		}
 
 		console.log(
 			process.env.NEXT_PUBLIC_API_URL
-		 )
-	   
-	   try {
-		 const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/communities`,  {data:formValues});
-		 console.log(res.data.message);
-		 console.log(
-			process.env.NEXT_API_URL
-		 )
-	   } catch (error) {
-		 console.log('Error submitting form:', error);
-	   //   setResponse('An error occurred.');
-	   }
-	 };
+		)
+
+		try {
+			const res = await axios.post(`http://ec2-13-51-65-133.eu-north-1.compute.amazonaws.com/api/communities`, { data: formValues });
+			console.log(res.data.message);
+			
+			console.log("🚀 ~ handleSubmit ~ res:", res)
+			console.log(
+				process.env.NEXT_API_URL
+			)
+		} catch (error) {
+			console.log('Error submitting form:', error);
+			//   setResponse('An error occurred.');
+		}
+	};
 
 	return (
 		<StyledForm>
