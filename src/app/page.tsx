@@ -147,14 +147,14 @@ export default function Home() {
         data={menu}
       />
       <LandPage value={landingPgRef} />
-      <section ref={containerRef} className="container">
+      <div ref={containerRef} className="container">
         <Mission value={visionRef} />
         <Team value={teamRef} />
         <News value={newsRef} />
         <NewsLetter
           value={subscribeRef}
         />
-      </section>
+      </div>
       
       <Community />
       <Socials />
@@ -168,6 +168,10 @@ export default function Home() {
 }
 
 const StyledHome = styled.section`
+
+width:100%;
+height:100vh;
+
 overflow-y: visible;
   position: relative;
   height: unset;

@@ -49,6 +49,7 @@ function NavBar(props: NavBarProps) {
 
 
                   <Link
+                  key={item._id}
                     className="navList"
                     style={{
                       color: "#ce9934",
@@ -97,7 +98,9 @@ function NavBar(props: NavBarProps) {
 
               if (item.title === "News") {
                 return (
-                  <Link style={{
+                  <Link 
+                   key={item._id}
+                  style={{
                     color: "#ce9934",
                     textDecoration: "none",
                   }}

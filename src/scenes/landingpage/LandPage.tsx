@@ -1,17 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import { TypeAnimation } from 'react-type-animation';
-import Image from "next/image"
 
 function LandPage(prop: { value: React.LegacyRef<HTMLDivElement> | undefined; }) {
     return (
-        <StyledLanding ref={prop.value} className="firstContainer">
+        <StyledLanding ref={prop.value} className='first_container' >
 
-            {/* <Image id="logo"
-                style={{
-                    zIndex: "2"
-                }}
-                layout="fixed" width={300} height={300} src="/logo.png" alt="logo" /> */}
+
 
             <div className="text_first">
                 <TypeAnimation

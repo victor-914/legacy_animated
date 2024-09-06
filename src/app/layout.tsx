@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+// import { Inter } from "next/font/google";
 import "./globals.css";
 // import NavBar from "@/scenes/navBar/NavBar";
 // import { menu } from "../app/page"
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Legacy Gaming Africa",
@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
 
     <html lang="en">
-      <body className={inter.className}>
+      <body >
         {/* <NavBar data={{}} /> */}
         {children}
       </body>
