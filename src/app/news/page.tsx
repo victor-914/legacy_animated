@@ -1,21 +1,39 @@
 "use client"
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Head from "next/head";
 import { useRouter } from "next/navigation";
 import { RiArrowGoBackLine } from "react-icons/ri";
-
+import axios from "axios";
 
 export default function News() {
   const router = useRouter()
-  const [currentPage, setCurrentPage] = useState(1);
-  // const { data, error, isLoading } = useSWR(
-  //   `${process.env.NEXT_PUBLIC_URL}/api/articles?sort[0]=publishedAt:desc&populate[images][fields][0]=*&fields[0]=title&fields[1]=publishedAt&pagination[pageSize]=3&pagination[page]=${currentPage}`,
-  //   fetcher,
-  //   {
-  //     fallbackData: news,
-  //   }
-  // );
+  // const [currentPage, setCurrentPage] = useState(1);
+  const [data, setData] = useState([])
+  console.log("🚀 ~ News ~ data:", "hdhdh", data)
+
+
+  useEffect(() => {
+    const fetch = async () => {
+      try {
+        const data = await axios.get("http://ec2-13-51-65-133.eu-north-1.compute.amazonaws.com/api/articles")
+        setData(data?.data)
+      } catch (error) {
+        console.log("🚀 ~ fetch ~ error:", error)
+
+      }
+
+    }
+
+    fetch()
+
+
+    return () => {
+      setData([])
+    }
+  }, [])
+
+
 
 
   return (
@@ -57,7 +75,13 @@ export default function News() {
 
         <main className="newsContainer">
 
-          <NewsBox />
+          {/* {
+            data?.map((value:any) => {
+
+              return (<NewsBox item={value} />)
+
+            })
+          // } */}
 
         </main>
       </section>
@@ -155,27 +179,9 @@ const StyledNews = styled.section`
   }
 `;
 
-// export async function getStaticProps() {
-//   try {
-//     const initialData = await api.get(
-//       "/api/articles?sort[0]=publishedAt:desc&populate[images][fields][0]=*&fields[0]=title&fields[1]=publishedAt&pagination[pageSize]=3&pagination[page]=1"
-//     );
-//     const news = initialData.data;
 
-//     return {
-//       props: {
-//         news,
-//       },
-//       revalidate: 300,
-//     };
-//   } catch (error) {
-//     return {
-//       props: {},
-//     };
-//   }
-// }
 
- const NewsBox = () => {
+const NewsBox = () => {
   return (
     <StyledNewBox
     // onClick={() => router.replace(`/news/`)}

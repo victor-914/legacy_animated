@@ -2,20 +2,20 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { TextField } from "@mui/material";
 import axios from "axios";
+import { toast } from "react-toastify";
 function Form() {
 
 	const [formValues, setFormValues] = useState({
-		firstName: "",
-		lastName: "",
+		firstname: "",
+		lastname: "",
 		age: "",
-		phoneNumber: "",
+		tel: "",
 		email: "",
-		gender: "",
+		// gender: "",
 		location: "",
-		favouriteMediaPlatform: "",
-		favouriteMPhandle: "",
-		oftenPlayGames: "",
-		favouriteGame: ""
+		social_handle: "",
+		frequency: "",
+		// favouriteGame: ""
 	});
 
 
@@ -32,16 +32,7 @@ function Form() {
 
 	};
 
-	// const handleSubmit = async (payload) => {
-
-	// 	try {
-	// 	  const res = await axios.post('/api/submit', { name });
-	// 	  setResponse(res.data.message);
-	// 	} catch (error) {
-	// 	  console.error('Error submitting form:', error);
-	// 	  setResponse('An error occurred.');
-	// 	}
-	//   };
+	
 
 	const formArr = [
 		{
@@ -49,9 +40,9 @@ function Form() {
 			type: "text",
 			placeholder: "first name",
 			onChange: handleComForm,
-			name: "firstName",
+			name: "firstname",
 			labelText: "first name",
-			value: formValues.firstName,
+			value: formValues.firstname,
 			helper: "Add your firstname"
 		},
 		{
@@ -59,9 +50,9 @@ function Form() {
 			type: "text",
 			placeholder: "last name",
 			onChange: handleComForm,
-			name: "lastName",
+			name: "lastname",
 			labelText: "last name",
-			value: formValues.lastName,
+			value: formValues.lastname,
 			helper: "Add your lastname"
 		},
 
@@ -126,31 +117,22 @@ function Form() {
 			type: "text",
 			placeholder: "e.g city...",
 			onChange: handleComForm,
-			name: "favouriteMediaPlatform",
-			labelText: "Favourite social platform",
-			value: formValues.favouriteMediaPlatform,
+			name: "social_handle",
+			labelText: "Social platform",
+			value: formValues.social_handle,
 			helper: "what your active social platform?"
 		},
 
-		{
-			_id: "323KjsjdDhd",
-			type: "text",
-			placeholder: "e.g x.com",
-			onChange: handleComForm,
-			name: "favouriteMediaPlatform",
-			labelText: "what your social handle",
-			value: formValues.favouriteMediaPlatform,
-			helper: "Add your social handle"
-		},
+		
 
 		{
 			_id: "33jdjd423",
 			type: "number",
 			placeholder: "+234...",
 			onChange: handleComForm,
-			name: "phoneNumber",
+			name: "tel",
 			labelText: "Tel No",
-			value: formValues.phoneNumber,
+			value: formValues.tel,
 			helper: "Add your phone number"
 		},
 
@@ -159,9 +141,9 @@ function Form() {
 			type: "select",
 			placeholder: "status",
 			onChange: handleComForm,
-			name: "oftenPlayGames",
+			name: "frequency",
 			labelText: "How often do you play games",
-			value: formValues.oftenPlayGames,
+			value: formValues.frequency,
 			helper: "select how often",
 			options: [
 				{
@@ -178,46 +160,46 @@ function Form() {
 				},
 				{
 					text: "Less than monthly",
-					value: "lessThanMonthly",
+					value: "less than monthly",
 				},
 			],
 		},
 
-		{
-			_id: "323KKDhjjdjwd",
-			type: "text",
-			placeholder: "e.g city...",
-			onChange: handleComForm,
-			name: "favouriteGame",
-			labelText: "Favourite game",
-			value: formValues.favouriteGame,
-			helper: "what is your favourite game?",
-		}
+	
 
 
 	];
 
 	const handleSubmit = async () => {
 
-		if (formValues == null || undefined || "") {
+		if ( formValues.frequency  === "" || formValues.age  === "") {
+			toast("Empty fields")
 			return
 		}
 
-		console.log(
-			process.env.NEXT_PUBLIC_API_URL
-		)
 
 		try {
 			const res = await axios.post(`http://ec2-13-51-65-133.eu-north-1.compute.amazonaws.com/api/communities`, { data: formValues });
-			console.log(res.data.message);
-			
-			console.log("🚀 ~ handleSubmit ~ res:", res)
-			console.log(
-				process.env.NEXT_API_URL
-			)
+
+
+			if (res.status === 200) {
+				toast("successful")
+				setFormValues({
+					firstname: "",
+					lastname: "",
+					age: "",
+					tel: "",
+					email: "",
+					location: "",
+					social_handle: "",
+					frequency: "",
+				})
+			}
 		} catch (error) {
-			console.log('Error submitting form:', error);
-			//   setResponse('An error occurred.');
+			console.log("🚀 ~ handleSubmit ~ error:", error)
+			if (error) {
+				toast("error")
+			}
 		}
 	};
 

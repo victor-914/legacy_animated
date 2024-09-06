@@ -7,11 +7,7 @@ function LandPage(prop: { value: React.LegacyRef<HTMLDivElement> | undefined; })
     return (
         <StyledLanding ref={prop.value} className="firstContainer">
 
-            {/* <Image id="logo"
-                style={{
-                    zIndex: "2"
-                }}
-                layout="fixed" width={300} height={300} src="/logo.png" alt="logo" /> */}
+
 
             <div className="text_first">
                 <TypeAnimation

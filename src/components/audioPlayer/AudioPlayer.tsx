@@ -1,4 +1,3 @@
-// components/AudioPlayer.js
 "use client"
 import React, { useState, useEffect, useRef } from 'react';
 import styles from '../audioPlayer/audioplayer.module.css';
@@ -14,12 +13,7 @@ export default function AudioPlayer({ }) {
   const [tapToPlay_STATE, setTapToPlay_STATE] = useState<Boolean>(true)
 
   useEffect(() => {
-    // if (audioRef?.current) {
-    //   audioRef.current.loop = true;
-    //   setIsPlaying(true)
-    //   audioRef?.current.play();
-
-    // }
+  
     const handleScroll = () => {
       if (window.scrollY > lastScrollY.current) {
         setIsVisible(false);
@@ -37,9 +31,7 @@ export default function AudioPlayer({ }) {
   }, []);
 
 
-  // useEffect(() => {
-  //   audioRef?.current?.play()
-  // }, [audioRef?.current]);
+ 
 
 
   const handleFirstClick = () => {
