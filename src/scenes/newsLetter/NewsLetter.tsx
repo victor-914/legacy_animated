@@ -1,16 +1,38 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import ParticlesComponent from '../particle/Particles'
+import axios from "axios";
+import { toast } from "react-toastify";
 
 function NewsLetter(prop: { value: React.LegacyRef<HTMLDivElement> }) {
 
-     const [email, setEmail] = useState("");
-     const [show, setShow] = useState(false);
+    const [email, setEmail] = useState("");
+    const [show, setShow] = useState(false);
 
-     const handleSubmit = () => {
-        console.log(email)
-        setShow(true)
-     }
+    const handleSubmit = async () => {
+
+        try {
+            if (email === "") {
+                toast('Add email address')
+                return
+            }
+            const res = await axios.post(`http://ec2-13-51-65-133.eu-north-1.compute.amazonaws.com/api/newsletters`, { data: { email } });
+            if (res.status === 200) {
+                toast("Subscribed")
+                setShow(true)
+            }
+        } catch (error) {
+            // console.log("🚀 ~ handleSubmit ~ error:", error)
+
+        }
+
+    }
+
+
+
+    const handleDownload = () => {
+        setShow(!show)
+    };
 
     return (
         <StyledNewsLetter className="panel" ref={prop.value}>
@@ -28,41 +50,46 @@ function NewsLetter(prop: { value: React.LegacyRef<HTMLDivElement> }) {
                         Subscribe to our newsletter and get a PDF detailing the amazing opportunities in the esport industry.
                     </p>
 
-                  {
-                    !show &&
-                    <main className='newsLetterCard'>
+                    {
+                        !show &&
+                        <main className='newsLetterCard'>
 
-                    <input 
-                     onChange={(e) => setEmail(e.target.value)}
-                    type='text' placeholder='Type your email' />
-                    <button
-                     onClick={handleSubmit}
-                    >next</button>
+                            <input
+                                onChange={(e) => setEmail(e.target.value)}
+                                type='text' placeholder='Type your email' />
+                            <button
+                                onClick={handleSubmit}
+                            >next</button>
 
 
 
-                </main>
-                  }
+                        </main>
+                    }
 
                     {
-                        show && 
+                        show &&
 
                         <main className='newsLetterCard'>
 
 
-                        <button
-                        //  onClick={handleSubmit}
-                        >Drownload PDF</button>
+                            <button
+                                onClick={handleDownload}
+                            >
+                                <a href="/Lg.pdf" download>
+                                    Download PDF
+
+                                </a>
+                            </button>
 
 
 
-                    </main>
+                        </main>
                     }
 
 
 
 
-                
+
 
                 </main>
 
@@ -168,6 +195,11 @@ clip-path: polygon(32% 0, 100% 0, 98% 96%, 0 100%);
     background-color: #CE9934;
     color:#fff;
     cursor:pointer;
+}
+
+.newsLetterCard button a{
+    color:white;
+    text-decoration: none;
 }
 
 .glitch-wrapper {

@@ -1,21 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
 import { TextField } from "@mui/material";
 import axios from "axios";
 import { toast } from "react-toastify";
 function Form() {
-
+	const formRef = useRef<HTMLFormElement>(null);
 	const [formValues, setFormValues] = useState({
 		firstname: "",
 		lastname: "",
 		age: "",
 		tel: "",
 		email: "",
-		// gender: "",
 		location: "",
 		social_handle: "",
 		frequency: "",
-		// favouriteGame: ""
 	});
 
 
@@ -32,7 +30,7 @@ function Form() {
 
 	};
 
-	
+
 
 	const formArr = [
 		{
@@ -123,7 +121,7 @@ function Form() {
 			helper: "what your active social platform?"
 		},
 
-		
+
 
 		{
 			_id: "33jdjd423",
@@ -165,14 +163,15 @@ function Form() {
 			],
 		},
 
-	
+
 
 
 	];
 
-	const handleSubmit = async () => {
+	const handleSubmit = async (e: { preventDefault: () => void; }) => {
+		e.preventDefault()
 
-		if ( formValues.frequency  === "" || formValues.age  === "") {
+		if (formValues.frequency === "" || formValues.age === "") {
 			toast("Empty fields")
 			return
 		}
@@ -181,22 +180,21 @@ function Form() {
 		try {
 			const res = await axios.post(`http://ec2-13-51-65-133.eu-north-1.compute.amazonaws.com/api/communities`, { data: formValues });
 
-
+			setFormValues({
+				firstname: "",
+				lastname: "",
+				age: "",
+				tel: "",
+				email: "",
+				location: "",
+				social_handle: "",
+				frequency: "",
+			})
 			if (res.status === 200) {
 				toast("successful")
-				setFormValues({
-					firstname: "",
-					lastname: "",
-					age: "",
-					tel: "",
-					email: "",
-					location: "",
-					social_handle: "",
-					frequency: "",
-				})
+				formRef.current?.reset();
 			}
 		} catch (error) {
-			console.log("🚀 ~ handleSubmit ~ error:", error)
 			if (error) {
 				toast("error")
 			}
@@ -206,7 +204,9 @@ function Form() {
 	return (
 		<StyledForm>
 
-			<form className="registration-form">
+			<form
+				ref={formRef}
+				onSubmit={handleSubmit} className="registration-form">
 
 				{formArr.map((item) => {
 
@@ -253,14 +253,16 @@ function Form() {
 				})}
 
 
+
+				<aside className="submitContainer">
+
+					<button role='submit' type='submit'>
+						submit
+					</button>
+				</aside>
+
 			</form>
 
-			<aside className="submitContainer">
-
-				<button onClick={handleSubmit} type='submit'>
-					submit
-				</button>
-			</aside>
 		</StyledForm>
 	)
 }

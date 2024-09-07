@@ -10,7 +10,6 @@ export default function News() {
   const router = useRouter()
   // const [currentPage, setCurrentPage] = useState(1);
   const [data, setData] = useState([])
-  console.log("🚀 ~ News ~ data:", "hdhdh", data)
 
 
   useEffect(() => {
@@ -19,8 +18,8 @@ export default function News() {
         const data = await axios.get("http://ec2-13-51-65-133.eu-north-1.compute.amazonaws.com/api/articles")
         setData(data?.data)
       } catch (error) {
-        console.log("🚀 ~ fetch ~ error:", error)
-
+        // console.log("🚀 ~ fetch ~ error:", error)
+        
       }
 
     }
@@ -85,7 +84,6 @@ export default function News() {
 
         </main>
       </section>
-
 
     </StyledNews>
   );
