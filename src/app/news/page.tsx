@@ -8,7 +8,6 @@ import axios from "axios";
 
 export default function News() {
   const router = useRouter()
-  // const [currentPage, setCurrentPage] = useState(1);
   const [data, setData] = useState([])
 
 
@@ -16,10 +15,9 @@ export default function News() {
     const fetch = async () => {
       try {
         const data = await axios.get("http://ec2-13-51-65-133.eu-north-1.compute.amazonaws.com/api/articles")
-        setData(data?.data)
+        setData(data?.data?.data)
       } catch (error) {
-        // console.log("🚀 ~ fetch ~ error:", error)
-        
+
       }
 
     }
@@ -74,13 +72,13 @@ export default function News() {
 
         <main className="newsContainer">
 
-          {/* {
-            data?.map((value:any) => {
+          {
+            data?.map((value: any) => {
 
-              return (<NewsBox item={value} />)
+              return (<NewsBox key={value.id} item={value} />)
 
             })
-          // } */}
+          }
 
         </main>
       </section>
@@ -179,20 +177,24 @@ const StyledNews = styled.section`
 
 
 
-const NewsBox = () => {
+const NewsBox = (item: any) => {
+  console.log("🚀 ~ NewsBox ~ item:", item.item.attributes)
   return (
     <StyledNewBox
     // onClick={() => router.replace(`/news/`)}
     >
 
-      <header className="headerCont">Flash flooding triggered by heavy monsoons in northwest Pakistan kills at least 14 people</header>
+      <header className="headerCont">
+        {item.item.attributes.title}
+      </header>
 
       <article>
-        Officials say heavy monsoons in northwest Pakistan triggered flash flooding, killing at least 14 people, 11 from the same family.
+        {item.item.attributes.title}
       </article>
 
-      <aside>
-        15-8-2024
+      <aside>z
+        {/* {new Date(item.item.attributes.createdAt)} */}
+
       </aside>
 
     </StyledNewBox>
