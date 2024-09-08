@@ -23,7 +23,7 @@ function LandPage(prop: { value: React.LegacyRef<HTMLDivElement> | undefined; })
 
             </div>
 
-            <p className="textFirst_p">Esport Organisation</p>
+            <p className="textFirst_p">E-sport Organisation</p>
 
 
             <div className="cover_first">

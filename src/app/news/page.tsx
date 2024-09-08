@@ -178,10 +178,10 @@ const StyledNews = styled.section`
 
 
 const NewsBox = (item: any) => {
-  console.log("🚀 ~ NewsBox ~ item:", item.item.attributes)
+  const router = useRouter()
   return (
     <StyledNewBox
-    // onClick={() => router.replace(`/news/`)}
+    onClick={() => router.replace(`/news/${item?.item?.id}`)}
     >
 
       <header className="headerCont">
@@ -189,12 +189,11 @@ const NewsBox = (item: any) => {
       </header>
 
       <article>
-        {item.item.attributes.title}
+        {item.item.attributes.content.split(' ').splice(0,20).join(' ').concat(".......")}
       </article>
 
-      <aside>z
-        {/* {new Date(item.item.attributes.createdAt)} */}
-
+      <aside>
+        {`${new Date(item.item.attributes.createdAt)}`}
       </aside>
 
     </StyledNewBox>
