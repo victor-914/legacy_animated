@@ -35,7 +35,7 @@ export default function Client() {
   const menu = [
     {
       _id: "jdhskdssf",
-      title: "Client",
+      title: "Home",
       ref: landingPgRef,
     },
     {

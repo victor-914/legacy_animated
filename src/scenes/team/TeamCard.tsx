@@ -19,7 +19,7 @@ interface TeamCardProps {
 export const data: PersonI[] = [
     {
         _id: "7475",
-        name: "Nnamani George",
+        name: "Barr. Nnamani George",
         title: "CEO",
         img: "/george.jpg"
     },
@@ -31,7 +31,7 @@ export const data: PersonI[] = [
     },
     {
         _id: "745",
-        name: "Abasi George",
+        name: "Agbasi George",
         title: "COO",
         img: "/abasi.jpg"
     },
