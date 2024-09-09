@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
-import { MenuI } from '@/app/page';
+import { MenuI } from '@/components/client/Client';
 import { AiOutlineMenu } from "react-icons/ai";
 import { IoMdClose } from "react-icons/io";
 import Link from 'next/link';
